@@ -12,3 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc09c8610ca9e544bbaf2e739d0b33a, type: 3}
   m_Name: InputConfig
   m_EditorClassIdentifier: Assembly-CSharp::InputConfig
+  MoveKeyTag: Move
+  JumpKeyTag: Jump
+  InteractionKeyTag: Interact
+  LookKeyTag: Look
+  MoveInputGravity: 20
+  LookSensitivity: 0.05
+  LookSmoothing: 5
+  LookVerticalLimit: 90

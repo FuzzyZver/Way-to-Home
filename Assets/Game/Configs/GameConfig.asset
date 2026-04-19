@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabc5b3027a1e294b9d2a1c7c3054754, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: Assembly-CSharp::GameConfig
+  InputConfig: {fileID: 11400000, guid: 65253a12aefb93d4db8b8b9b575cb13f, type: 2}
+  PlayerConfig: {fileID: 11400000, guid: 207a3f0dff2a6b145835985c9d421d16, type: 2}

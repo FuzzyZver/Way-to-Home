@@ -4,4 +4,5 @@ using UnityEngine;
 public class GameConfig : ScriptableObject
 {
     public InputConfig InputConfig;
+    public PlayerConfig PlayerConfig;
 }
