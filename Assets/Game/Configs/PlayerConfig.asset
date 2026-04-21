@@ -17,4 +17,4 @@ MonoBehaviour:
   FlashlightMaxRange: 40
   FlashlightMinRange: 8
   SpotAngel: 180
-  Intensity: 20
+  Intensity: 10

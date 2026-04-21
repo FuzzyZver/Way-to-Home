@@ -24,11 +24,13 @@ public class EcsInclude : MonoBehaviour
             .Add(new MovementSystem())
             .Add(new LookSystem())
             .Add(new FlashlightSystem())
+            .Add(new FlashLightraycastSystem())
 
             //OneFrame<..
             .OneFrame<MoveInputEvent>()
             .OneFrame<LookInputEvent>()
             .OneFrame<ScrollInputEvent>()
+            .OneFrame<FlashLightRaycastEvent>()
 
 
             .Inject(_world)
