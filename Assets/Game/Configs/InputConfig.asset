@@ -16,7 +16,10 @@ MonoBehaviour:
   JumpKeyTag: Jump
   InteractionKeyTag: Interact
   LookKeyTag: Look
+  ScrollKeyTag: Scroll
   MoveInputGravity: 20
   LookSensitivity: 0.05
   LookSmoothing: 5
   LookVerticalLimit: 90
+  MaxScroll: 25
+  MinScroll: 8

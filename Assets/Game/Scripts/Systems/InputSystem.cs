@@ -9,6 +9,7 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
     private InputAction _jumpInputAction;
     private InputAction _interacionInputAction;
     private InputAction _lookInputAction;
+    private InputAction _scrollInputAction;
 
     public void Init()
     {
@@ -40,10 +41,19 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
             Debug.LogError($"[INPUT SYSTEM] Key tag |{lookKeyTag}| for look is not recognized!" +
                            "Please check Input Config or Input System Settings!");
 
+        string scrollKeyTag = GameConfig.InputConfig.ScrollKeyTag;
+        _scrollInputAction = Input.actions.FindAction(scrollKeyTag);
+        if (_scrollInputAction != null)
+            _scrollInputAction.performed += OnScrollInput;
+        else
+            Debug.LogError($"[INPUT SYSTEM] Key tag |{scrollKeyTag}| for jump is not recognized!" +
+                               "Please check Input Config or Input System Settings!");
+
         _moveInputAction.Enable();
         _jumpInputAction.Enable();
         _interacionInputAction.Enable();
         _lookInputAction.Enable();
+        _scrollInputAction.Enable();
     }
 
     private void OnJunpKeyPress(InputAction.CallbackContext callbackContext)
@@ -54,6 +64,11 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
     private void OnInteractionKeyPress(InputAction.CallbackContext callbackContext)
     {
         //EcsWorld.NewEntity().Get<InteractInputEvent>();
+    }
+
+    private void OnScrollInput(InputAction.CallbackContext callbackContext)
+    {
+        EcsWorld.NewEntity().Get<ScrollInputEvent>().Value = callbackContext.ReadValue<float>();
     }
 
     public void Run()
