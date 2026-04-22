@@ -25,12 +25,16 @@ public class EcsInclude : MonoBehaviour
             .Add(new LookSystem())
             .Add(new FlashlightSystem())
             .Add(new FlashLightraycastSystem())
+            .Add(new EnemyFolowSystem())
+            .Add(new EnemyFlashlightTrigger())
+            .Add(new EnemyFindHidePointSystem())
 
             //OneFrame<..
             .OneFrame<MoveInputEvent>()
             .OneFrame<LookInputEvent>()
             .OneFrame<ScrollInputEvent>()
             .OneFrame<FlashLightRaycastEvent>()
+            .OneFrame<MoveEnemyEvent>()
 
 
             .Inject(_world)

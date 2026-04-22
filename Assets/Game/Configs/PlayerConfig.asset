@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerConfig
   Speed: 10
   ScrollSpeed: 3
-  FlashlightMaxRange: 40
+  FlashlightMaxRange: 50
   FlashlightMinRange: 8
   SpotAngel: 180
-  Intensity: 10
+  Intensity: 20
