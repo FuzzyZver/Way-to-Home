@@ -7,8 +7,6 @@ public class EnemyFindHidePointSystem: Injects, IEcsInitSystem, IEcsRunSystem
     private EcsFilter<EnemyHideFlag> _enemyHideFlagFilter;
     private PlayerActor _playerRef;
     private EnemiesConfig _enemyConfig;
-    private float _maxDistance = 100f;
-    private float[] angles = { -60f, -45f, -30f, - 15f, 0f, 15f, 30f, 45f, 60f };
 
     public void Init()
     {
@@ -27,24 +25,48 @@ public class EnemyFindHidePointSystem: Injects, IEcsInitSystem, IEcsRunSystem
             var enemyEntity = _enemyHideFlagFilter.GetEntity(i);
             var enemyNavMesh = enemyEntity.Get<NavMeshAgentRef>().NavMeshAgent;
 
+            if (enemyEntity.Has<DespawnFlag>()) return;
+
             Vector3 fleePoint;
             bool found = TryFindBestFleePoint(
                 playerEntity.Get<CameraRef>().Camera.transform,
                 enemyEntity.Get<TransformRef>().Transform,
                 enemyNavMesh,
-                1000f,   // дальность луча
+                10000f,   // дальность луча
                 2f,    // насколько "за объект"
                 7,     // количество лучей
-                60f,   // угол разброса
+                100f,   // угол разброса
                 out fleePoint
             );
 
             if (found)
             {
+                if (!enemyEntity.Has<FadeComponent>())
+                {
+                    enemyEntity.Get<FadeComponent>() = new FadeComponent
+                    {
+                        Current = 1f,
+                        Target = 0f,
+                        Speed = 0.5f
+                    };
+                }
+
                 enemyNavMesh.isStopped = false;
                 if (Vector3.Distance(enemyNavMesh.destination, fleePoint) > 0.5f)
                 {
                     enemyNavMesh.SetDestination(fleePoint);
+                    Vector3 dirToPlayer = playerEntity.Get<CameraRef>().Camera.transform.position - enemyEntity.Get<TransformRef>().Transform.position;
+                    dirToPlayer.y = 0;
+
+                    if (dirToPlayer != Vector3.zero)
+                    {
+                        Quaternion lookRot = Quaternion.LookRotation(dirToPlayer);
+                        enemyEntity.Get<TransformRef>().Transform.rotation = Quaternion.Slerp(
+                            enemyEntity.Get<TransformRef>().Transform.rotation,
+                            lookRot,
+                            Time.deltaTime * 5f
+                        );
+                    }
                 }
             }
         }
@@ -67,12 +89,19 @@ public class EnemyFindHidePointSystem: Injects, IEcsInitSystem, IEcsRunSystem
 
         int obstacleMask = 1 << LayerMask.NameToLayer("Obstacle");
 
-        // центр взгляда игрока
+        if (agent.remainingDistance < 1f)
+        {
+            Vector3 dirToEnemy = (enemy.position - playerCamera.position);
+            if (Physics.Raycast(playerCamera.position, dirToEnemy.normalized, out RaycastHit hit, dirToEnemy.magnitude, obstacleMask))
+            {
+                return false;
+            }
+        }
+
         Vector3 forward = playerCamera.forward;
 
         for (int i = 0; i < raysCount; i++)
         {
-            // равномерное распределение лучей
             float t = (float)i / (raysCount - 1);
             float angle = Mathf.Lerp(-angleSpread, angleSpread, t);
 
@@ -105,6 +134,11 @@ public class EnemyFindHidePointSystem: Injects, IEcsInitSystem, IEcsRunSystem
                     float distance = Vector3.Distance(navPoint, origin);
 
                     float score = distance;
+
+                    if (Vector3.Distance(navPoint, agent.destination) < 2f)
+                    {
+                        score += 50f;
+                    }
 
                     NavMeshPath path = new NavMeshPath();
                     if (agent.CalculatePath(navPoint, path) && path.status == NavMeshPathStatus.PathComplete)

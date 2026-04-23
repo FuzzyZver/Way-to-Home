@@ -15,9 +15,15 @@ public class EnemyFlashlightTrigger: Injects, IEcsRunSystem
                 var enemyEntity = enemy.GetEntity();
                 enemyEntity.Del<EnemyFolowFlag>();
                 enemyEntity.Get<EnemyHideFlag>();
+
                 var enemyNavMeshAgent = enemyEntity.Get<NavMeshAgentRef>().NavMeshAgent;
                 enemyNavMeshAgent.isStopped = true;
                 enemyNavMeshAgent.ResetPath();
+                enemyNavMeshAgent.updateRotation = false;
+
+                var enemyAnimator = enemyEntity.Get<AnimatorRef>().Animator;
+                enemyAnimator.SetBool("IsWalking", false);
+                enemyAnimator.SetBool("IsHiding", true);
             }
         }
     }

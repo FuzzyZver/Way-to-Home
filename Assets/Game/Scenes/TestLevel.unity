@@ -2809,6 +2809,7 @@ GameObject:
   - component: {fileID: 919132148461048807}
   - component: {fileID: 919132148461048808}
   - component: {fileID: 919132148461048809}
+  - component: {fileID: 919132148461048810}
   m_Layer: 0
   m_Name: Monster_3
   m_TagString: Untagged
@@ -2852,6 +2853,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyActor
   _navMeshAgent: {fileID: 919132148461048807}
   _transform: {fileID: 543450652112177500}
+  _animator: {fileID: 919132148461048810}
+  _renderer: {fileID: 8927866877865348098}
 --- !u!136 &919132148461048809
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2875,6 +2878,28 @@ CapsuleCollider:
   m_Height: 5.0205755
   m_Direction: 1
   m_Center: {x: -0.060946092, y: 2.615872, z: 0}
+--- !u!95 &919132148461048810
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148461048806}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: d9cdb560854293b4e9af1d6eed8bc124, type: 3}
+  m_Controller: {fileID: 9100000, guid: b96527faae1ab6140821de5023affb45, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1082271959339266237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3874,7 +3899,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6879165488806458551, guid: d9cdb560854293b4e9af1d6eed8bc124, type: 3}
+  - {fileID: 2100000, guid: 30e1c815db45d5a4da7de7e4adafd10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3898,7 +3923,7 @@ SkinnedMeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   serializedVersion: 2
-  m_Quality: 0
+  m_Quality: 2
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: -4898741292429843099, guid: d9cdb560854293b4e9af1d6eed8bc124, type: 3}

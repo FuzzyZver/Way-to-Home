@@ -28,6 +28,7 @@ public class EcsInclude : MonoBehaviour
             .Add(new EnemyFolowSystem())
             .Add(new EnemyFlashlightTrigger())
             .Add(new EnemyFindHidePointSystem())
+            //.Add(new FadeSystem())
 
             //OneFrame<..
             .OneFrame<MoveInputEvent>()
