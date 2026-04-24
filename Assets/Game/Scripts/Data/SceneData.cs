@@ -5,4 +5,5 @@ public class SceneData : MonoBehaviour
 {
     public PlayerActor Player;
     public List<EnemyActor> Enemies;
+    public InteractionActor Character;
 }

@@ -63,7 +63,7 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
 
     private void OnInteractionKeyPress(InputAction.CallbackContext callbackContext)
     {
-        //EcsWorld.NewEntity().Get<InteractInputEvent>();
+        EcsWorld.NewEntity().Get<InteractInputEvent>();
     }
 
     private void OnScrollInput(InputAction.CallbackContext callbackContext)

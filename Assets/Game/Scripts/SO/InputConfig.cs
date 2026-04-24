@@ -14,4 +14,5 @@ public class InputConfig : ScriptableObject
     public float LookSensitivity;
     public float LookSmoothing;
     public float LookVerticalLimit;
+    public float InteractionDistance;
 }

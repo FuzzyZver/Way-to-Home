@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameConfig
   InputConfig: {fileID: 11400000, guid: 65253a12aefb93d4db8b8b9b575cb13f, type: 2}
   PlayerConfig: {fileID: 11400000, guid: 207a3f0dff2a6b145835985c9d421d16, type: 2}
+  EnemiesConfig: {fileID: 11400000, guid: 08e1197411fd969408b93b8a136eb5f7, type: 2}
+  TextConfig: {fileID: 11400000, guid: 04d0dd687fcce944189351b5fa279c8d, type: 2}
