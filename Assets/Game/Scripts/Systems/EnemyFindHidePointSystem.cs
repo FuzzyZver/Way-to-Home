@@ -32,10 +32,10 @@ public class EnemyFindHidePointSystem: Injects, IEcsInitSystem, IEcsRunSystem
                 playerEntity.Get<CameraRef>().Camera.transform,
                 enemyEntity.Get<TransformRef>().Transform,
                 enemyNavMesh,
-                10000f,   // дальность луча
-                2f,    // насколько "за объект"
-                7,     // количество лучей
-                100f,   // угол разброса
+                _enemyConfig.PlayerRaycastDistance, 
+                _enemyConfig.BehindOffsetDistance,
+                _enemyConfig.FleeRaysCount,
+                _enemyConfig.FleeRaysAngel,
                 out fleePoint
             );
 
@@ -47,7 +47,7 @@ public class EnemyFindHidePointSystem: Injects, IEcsInitSystem, IEcsRunSystem
                     {
                         Current = 1f,
                         Target = 0f,
-                        Speed = 0.5f
+                        Speed = _enemyConfig.FadeSpeed
                     };
                 }
 

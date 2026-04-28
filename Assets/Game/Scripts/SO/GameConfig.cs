@@ -7,4 +7,5 @@ public class GameConfig : ScriptableObject
     public PlayerConfig PlayerConfig;
     public EnemiesConfig EnemiesConfig;
     public TextConfig TextConfig;
+    public CommonConfig CommonConfig;
 }

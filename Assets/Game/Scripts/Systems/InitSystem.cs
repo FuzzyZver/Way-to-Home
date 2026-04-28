@@ -12,19 +12,23 @@ public class InitSystem: Injects, IEcsPreInitSystem
         SceneData.Character.GetEntity().Get<CharacterComponent>() = new CharacterComponent
         {
             CharacterId = 1,
-            CompleteDialogs = new List<bool>(GameConfig.TextConfig.FirstCharacterDialogs.Count)
+            CompleteDialogs = new List<bool>()
         };
-        
-        foreach(EnemyActor enemyActor in SceneData.Enemies)
+        foreach(DialogueGroup dialogueGroup in GameConfig.TextConfig.FirstCharacterDialogs)
+        {
+            SceneData.Character.GetEntity().Get<CharacterComponent>().CompleteDialogs.Add(false);
+        }
+
+        foreach (EnemyActor enemyActor in SceneData.Enemies)
         {
             enemyActor.Init(EcsWorld);
         }
 
         //Render fog init
         RenderSettings.fog = true;
-        RenderSettings.fogMode = FogMode.Exponential;
-        RenderSettings.fogDensity = 0.07f;
-        RenderSettings.fogColor = Color.darkGray;
-        Application.targetFrameRate = 30;
+        RenderSettings.fogMode = GameConfig.CommonConfig.FogMode;
+        RenderSettings.fogDensity = GameConfig.CommonConfig.FogDensity;
+        RenderSettings.fogColor = GameConfig.CommonConfig.FogColor;
+        Application.targetFrameRate = GameConfig.CommonConfig.FogFrameRate;
     }
 }

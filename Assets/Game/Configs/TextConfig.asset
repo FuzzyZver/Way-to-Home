@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: TextConfig
   m_EditorClassIdentifier: Assembly-CSharp::TextConfig
   TextDialogScreen: {fileID: 8635052399338036794, guid: bd8e16e7cd78d384498e451498e6baeb, type: 3}
+  TextTypingDuration: 0.3
+  UISlowMoveDuration: 1
+  UIFastMoveDuration: 0.5
   FirstCharacterDialogs:
   - Lines:
     - characterName: Clara

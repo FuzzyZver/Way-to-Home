@@ -17,6 +17,7 @@ MonoBehaviour:
   InteractionKeyTag: Interact
   LookKeyTag: Look
   ScrollKeyTag: Scroll
+  ContinueKeyTag: Continue
   MoveInputGravity: 20
   LookSensitivity: 0.05
   LookSmoothing: 5

@@ -10,6 +10,7 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
     private InputAction _interacionInputAction;
     private InputAction _lookInputAction;
     private InputAction _scrollInputAction;
+    private InputAction _continueInputAction;
 
     public void Init()
     {
@@ -49,11 +50,20 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
             Debug.LogError($"[INPUT SYSTEM] Key tag |{scrollKeyTag}| for jump is not recognized!" +
                                "Please check Input Config or Input System Settings!");
 
+        string continueKeyTag = GameConfig.InputConfig.ContinueKeyTag;
+        _continueInputAction = Input.actions.FindAction(continueKeyTag);
+        if (_continueInputAction != null)
+            _continueInputAction.performed += OnContinueKeyPress;
+        else
+            Debug.LogError($"[INPUT SYSTEM] Key tag |{continueKeyTag}| for interaction is not recognized!" +
+                               "Please check Input Config or Input System Settings!");
+
         _moveInputAction.Enable();
         _jumpInputAction.Enable();
         _interacionInputAction.Enable();
         _lookInputAction.Enable();
         _scrollInputAction.Enable();
+        _continueInputAction.Enable();
     }
 
     private void OnJunpKeyPress(InputAction.CallbackContext callbackContext)
@@ -64,6 +74,10 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
     private void OnInteractionKeyPress(InputAction.CallbackContext callbackContext)
     {
         EcsWorld.NewEntity().Get<InteractInputEvent>();
+    }
+    private void OnContinueKeyPress(InputAction.CallbackContext callbackContext)
+    {
+        EcsWorld.NewEntity().Get<ContinueInputEvent>();
     }
 
     private void OnScrollInput(InputAction.CallbackContext callbackContext)

@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f1057ac8f5b6142b9e94885502d06c, type: 3}
   m_Name: EnemiesConfig
   m_EditorClassIdentifier: Assembly-CSharp::EnemiesConfig
+  PlayerRaycastDistance: 10000
+  BehindOffsetDistance: 2
+  FleeRaysCount: 10
+  FleeRaysAngel: 100
+  FadeSpeed: 0.5

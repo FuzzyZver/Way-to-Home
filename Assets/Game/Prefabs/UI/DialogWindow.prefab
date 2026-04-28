@@ -475,6 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db28322c56844b4694882cb4d35a0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextDialogScreen
+  _textConfig: {fileID: 11400000, guid: 04d0dd687fcce944189351b5fa279c8d, type: 2}
   _characterName: {fileID: 7416004134471906876}
   _dialogText: {fileID: 3032917042875061430}
   _transform: {fileID: 1139395178679248603}

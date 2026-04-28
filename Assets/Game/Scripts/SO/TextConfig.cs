@@ -5,6 +5,9 @@ using UnityEngine;
 public class TextConfig : ScriptableObject
 {
     public TextDialogScreen TextDialogScreen;
+    public float TextTypingDuration;
+    public float UISlowMoveDuration;
+    public float UIFastMoveDuration;
 
     public List<DialogueGroup> FirstCharacterDialogs;
 }

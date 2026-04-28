@@ -8,6 +8,7 @@ public class InputConfig : ScriptableObject
     public string InteractionKeyTag;
     public string LookKeyTag;
     public string ScrollKeyTag;
+    public string ContinueKeyTag;
 
     [Header("Other props")]
     public float MoveInputGravity;

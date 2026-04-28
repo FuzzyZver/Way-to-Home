@@ -40,6 +40,7 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<FlashLightRaycastEvent>()
             .OneFrame<MoveEnemyEvent>()
             .OneFrame<TextDialogEvent>()
+            .OneFrame<ContinueInputEvent>()
 
 
             .Inject(_world)

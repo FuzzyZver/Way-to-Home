@@ -5,14 +5,15 @@ using DG.Tweening;
 
 public class TextDialogScreen : MonoBehaviour
 {
+    [SerializeField] private TextConfig _textConfig;
     [SerializeField] private TextMeshProUGUI _characterName;
     [SerializeField] private TextMeshProUGUI _dialogText;
     [SerializeField] private Transform _transform;
     [SerializeField] private Image _background;
 
     // AnimationProperties
-    private float _moveDuration = 0.8f;
-    private float _typingDuration = 1.5f;
+    private float _typingDuration;
+    private float _moveDuration;
     private float _startPos = -200f;
     private float _endPos = 120f;
 
@@ -20,6 +21,9 @@ public class TextDialogScreen : MonoBehaviour
 
     private void Awake()
     {
+        _moveDuration = _textConfig.TextTypingDuration;
+        _moveDuration = _textConfig.UIFastMoveDuration;
+
         var pos = _transform.localPosition;
         pos.y = _startPos;
         _transform.localPosition = pos;
