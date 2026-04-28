@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f1057ac8f5b6142b9e94885502d06c, type: 3}
   m_Name: EnemiesConfig
   m_EditorClassIdentifier: Assembly-CSharp::EnemiesConfig
+  EnemyActor: {fileID: 4219771635310687621, guid: 19b61ef09ee68cf4ca287ae55c745f99, type: 3}
+  SpawnDistanceFromPlayer: 10
+  SpawnCooldown: 5
+  SpawbRaysCount: 20
+  SpawnRaysAngel: 100
   PlayerRaycastDistance: 10000
   BehindOffsetDistance: 2
   FleeRaysCount: 10

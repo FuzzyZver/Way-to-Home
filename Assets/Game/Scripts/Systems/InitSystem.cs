@@ -19,11 +19,6 @@ public class InitSystem: Injects, IEcsPreInitSystem
             SceneData.Character.GetEntity().Get<CharacterComponent>().CompleteDialogs.Add(false);
         }
 
-        foreach (EnemyActor enemyActor in SceneData.Enemies)
-        {
-            enemyActor.Init(EcsWorld);
-        }
-
         //Render fog init
         RenderSettings.fog = true;
         RenderSettings.fogMode = GameConfig.CommonConfig.FogMode;

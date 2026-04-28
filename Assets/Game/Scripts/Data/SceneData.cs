@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class SceneData : MonoBehaviour
 {
     public PlayerActor Player;
-    public List<EnemyActor> Enemies;
     public InteractionActor Character;
+    public NavMeshSurface NavMeshSurface;
 }

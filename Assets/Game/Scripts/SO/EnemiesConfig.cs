@@ -3,6 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemiesConfig", menuName = "Configs/EnemiesConfig")]
 public class EnemiesConfig : ScriptableObject
 {
+    public EnemyActor EnemyActor;
+    [Header("Spawn")]
+    public float SpawnDistanceFromPlayer;
+    public float SpawnCooldown;
+    public int SpawbRaysCount;
+    public float SpawnRaysAngel;
     [Header("SeekState")]
 
     [Header("HideState")]

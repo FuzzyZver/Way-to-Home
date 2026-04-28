@@ -21,8 +21,9 @@ public class TextDialogSystem: Injects, IEcsInitSystem, IEcsRunSystem
     public void Run()
     {
         var playerEntity = _playerRef.GetEntity();
+        if (playerEntity.Has<DeadFlag>()) return;
 
-        foreach(int i in _continueInputEventFilter)
+        foreach (int i in _continueInputEventFilter)
         {
             if (_currentDialogScreen)
             {
@@ -40,7 +41,6 @@ public class TextDialogSystem: Injects, IEcsInitSystem, IEcsRunSystem
             }
         }
 
-        if (playerEntity.Has<DeadFlag>()) return;
         if (playerEntity.Has<FreezeFlag>()) return;
 
         foreach (int i in _textDialogEventFilter)
