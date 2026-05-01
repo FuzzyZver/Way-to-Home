@@ -1,12 +1,22 @@
 using Leopotam.Ecs;
 using UnityEngine;
 
-public class EnemyFlashlightTrigger: Injects, IEcsRunSystem
+public class EnemyFlashlightTrigger: Injects, IEcsInitSystem, IEcsRunSystem
 {
     private EcsFilter<FlashLightRaycastEvent> _flashlightRaycastEventFilter;
+    private PlayerActor _playerRef;
+
+    public void Init()
+    {
+        _playerRef = SceneData.Player;
+    }
 
     public void Run()
     {
+        var playerEntity = _playerRef.GetEntity();
+        if (playerEntity.Has<DeadFlag>()) return;
+        if (playerEntity.Has<FreezeFlag>()) return;
+
         foreach (int i in _flashlightRaycastEventFilter)
         {
             ref var eventComp = ref _flashlightRaycastEventFilter.Get1(i);

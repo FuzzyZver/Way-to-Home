@@ -31,6 +31,7 @@ public class TextDialogSystem: Injects, IEcsInitSystem, IEcsRunSystem
                 {
                     _dialogLine = 0;
                     playerEntity.Del<FreezeFlag>();
+                    playerEntity.Del<CameraFocusFlag>();
                     _currentDialogScreen.EndDialog();
                     _currentDialogScreen = null;
                 }
@@ -46,7 +47,7 @@ public class TextDialogSystem: Injects, IEcsInitSystem, IEcsRunSystem
         foreach (int i in _textDialogEventFilter)
         {
             var characterEntity = _textDialogEventFilter.Get1(i).InteractionActor.GetEntity();
-            var characterTransform = characterEntity.Get<TransformRef>().Transform;
+            var characterCameraTarget = characterEntity.Get<CameraTargetRef>().Transform;
             ref var charComp = ref characterEntity.Get<CharacterComponent>();
 
             for (int j = 0; j < charComp.CompleteDialogs.Count; j++)
@@ -60,6 +61,7 @@ public class TextDialogSystem: Injects, IEcsInitSystem, IEcsRunSystem
                     _currentDialogScreen = GameObject.Instantiate(_textConfig.TextDialogScreen, UI.transform);
                     _currentDialogScreen.StartDialog();
                     playerEntity.Get<FreezeFlag>();
+                    playerEntity.Get<CameraFocusFlag>().Transform = characterCameraTarget;
                     Dialog();
                     charComp.CompleteDialogs[j] = true;
                     break;

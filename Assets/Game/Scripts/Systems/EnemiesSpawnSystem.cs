@@ -21,8 +21,12 @@ public class EnemiesSpawnSystem:Injects, IEcsInitSystem, IEcsRunSystem
     public void Run()
     {
         var playerEntity = _playerRef.GetEntity();
-        if (playerEntity.Has<DeadFlag>()) return;
-        if (playerEntity.Has<FreezeFlag>()) return;
+
+        if (playerEntity.Has<DeadFlag>() || playerEntity.Has<FreezeFlag>())
+        {
+            _lastSpawnTime += Time.deltaTime;
+            return;
+        }
 
         if (Time.time - _lastSpawnTime < _enemiesConfig.SpawnCooldown) return;
         _lastSpawnTime = Time.time;
