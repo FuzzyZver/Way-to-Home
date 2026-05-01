@@ -37,8 +37,7 @@ public class EnemiesSpawnSystem:Injects, IEcsInitSystem, IEcsRunSystem
             _enemiesConfig.SpawnRaysAngel,
             out Vector3 spawnPoint
             );
-        var enemyActor = GameObject.Instantiate(_enemiesConfig.EnemyActor, spawnPoint, Quaternion.identity);
-        enemyActor.Init(EcsWorld);
+        EcsWorld.NewEntity().Get<GetEnemyPoolEvent>().Vector3 = spawnPoint;
 
     }
 

@@ -30,8 +30,9 @@ public class EcsInclude : MonoBehaviour
             .Add(new EnemyFlashlightTrigger())
             .Add(new EnemyFindHidePointSystem())
             .Add(new TextDialogSystem())
-            //.Add(new FadeSystem())
+            .Add(new FadeSystem())
             .Add(new EnemiesSpawnSystem())
+            .Add(new EnemyPoolSystem())
 
             //OneFrame<..
             .OneFrame<MoveInputEvent>()
@@ -42,6 +43,7 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<MoveEnemyEvent>()
             .OneFrame<TextDialogEvent>()
             .OneFrame<ContinueInputEvent>()
+            .OneFrame<GetEnemyPoolEvent>()
 
 
             .Inject(_world)
