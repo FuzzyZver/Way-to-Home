@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca03783d5b7dae49b69cd4c5fce562e, type: 3}
+  m_Name: SoundStepConfig
+  m_EditorClassIdentifier: Assembly-CSharp::SoundStepConfig
+  DistanceForStep: 3.5
+  soundPacks:
+  - material: {fileID: 13400000, guid: 3740ddbe0ab21dc4bbf8367522b6e9dd, type: 2}
+    clips:
+    - {fileID: 8300000, guid: 822ac1fb7a454a44bab2a3620bc03eb0, type: 3}
+    - {fileID: 8300000, guid: e350e03bca366904588780e3e4f6339f, type: 3}
+    - {fileID: 8300000, guid: c82da87d15641194fb28fef32ca6b2ab, type: 3}
+    - {fileID: 8300000, guid: 208fdafc28ba281469939f6ab2bd0d92, type: 3}
+    - {fileID: 8300000, guid: 783e305207f1efc49b089fb0f9c50647, type: 3}

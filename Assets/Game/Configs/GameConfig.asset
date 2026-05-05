@@ -17,3 +17,5 @@ MonoBehaviour:
   EnemiesConfig: {fileID: 11400000, guid: 08e1197411fd969408b93b8a136eb5f7, type: 2}
   TextConfig: {fileID: 11400000, guid: 04d0dd687fcce944189351b5fa279c8d, type: 2}
   CommonConfig: {fileID: 11400000, guid: 2277b6ed3baa51842bdc8806822bc7eb, type: 2}
+  SoundStepConfig: {fileID: 11400000, guid: 7d278dfc3eacb344c824c631a4223f3e, type: 2}
+  SoundConfig: {fileID: 11400000, guid: bf58fb642dbea134194b6ef1ba2757ce, type: 2}

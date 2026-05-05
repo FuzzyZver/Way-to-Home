@@ -35,7 +35,7 @@ public class MovementSystem : Injects, IEcsInitSystem, IEcsRunSystem
             var targetRbVelocity = new Vector3(targetVelocity.x, playerRigidbody.linearVelocity.y, targetVelocity.y);
             playerRigidbody.linearVelocity = playerRigidbody.transform.rotation * targetRbVelocity;
 
-            if (targetVelocity.x > 0)
+            if (targetVelocity.x > 0 || targetVelocity.y > 0)
             {
                 playerEntity.Get<MoveFlag>();
             }

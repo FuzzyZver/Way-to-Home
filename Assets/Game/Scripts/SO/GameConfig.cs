@@ -8,4 +8,6 @@ public class GameConfig : ScriptableObject
     public EnemiesConfig EnemiesConfig;
     public TextConfig TextConfig;
     public CommonConfig CommonConfig;
+    public SoundStepConfig SoundStepConfig;
+    public SoundConfig SoundConfig;
 }

@@ -34,6 +34,8 @@ public class EcsInclude : MonoBehaviour
             .Add(new EnemiesSpawnSystem())
             .Add(new EnemyPoolSystem())
             .Add(new CameraFocusSystem())
+            .Add(new StepSoundSystem())
+            .Add(new AudioEffectsSystem())
 
             //OneFrame<..
             .OneFrame<MoveInputEvent>()
@@ -45,6 +47,7 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<TextDialogEvent>()
             .OneFrame<ContinueInputEvent>()
             .OneFrame<GetEnemyPoolEvent>()
+            .OneFrame<AudioEffectEvent>()
 
 
             .Inject(_world)
