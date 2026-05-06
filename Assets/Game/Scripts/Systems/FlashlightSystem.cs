@@ -13,7 +13,7 @@ public class FlashlightSystem: Injects, IEcsInitSystem, IEcsRunSystem
     public void Init()
     {
         _playerRef = SceneData.Player;
-        _flashlight = _playerRef.GetEntity().Get<FlashlightComponent>().Light;
+        _flashlight = _playerRef.GetEntity().Get<LightRef>().Light;
         _playerConfig = GameConfig.PlayerConfig;
     }
 

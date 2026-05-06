@@ -36,6 +36,8 @@ public class EcsInclude : MonoBehaviour
             .Add(new CameraFocusSystem())
             .Add(new StepSoundSystem())
             .Add(new AudioEffectsSystem())
+            .Add(new BlinkingLightSystem())
+            .Add(new ObjectActivatesSystem())
 
             //OneFrame<..
             .OneFrame<MoveInputEvent>()

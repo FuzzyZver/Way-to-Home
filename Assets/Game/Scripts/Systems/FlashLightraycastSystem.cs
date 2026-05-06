@@ -16,7 +16,7 @@ public class FlashLightraycastSystem: Injects, IEcsInitSystem, IEcsRunSystem
         if (playerEntity.Has<DeadFlag>()) return;
         if (playerEntity.Has<FreezeFlag>()) return;
 
-        var flashlight = playerEntity.Get<FlashlightComponent>().Light;
+        var flashlight = playerEntity.Get<LightRef>().Light;
         if (Physics.Raycast(flashlight.transform.position, flashlight.transform.forward, out var hitInfo, flashlight.range))
         {
             EcsWorld.NewEntity().Get<FlashLightRaycastEvent>().HitInfo = hitInfo;

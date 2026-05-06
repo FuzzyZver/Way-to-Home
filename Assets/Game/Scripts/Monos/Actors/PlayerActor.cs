@@ -15,6 +15,6 @@ public class PlayerActor: Actor
         entity.Get<TransformRef>().Transform = _transform;
         entity.Get<CameraRef>().Camera = _camera;
         entity.Get<CameraTargetRef>().Transform = _cameraTargetTransform;
-        entity.Get<FlashlightComponent>().Light = _flashlightLight;
+        entity.Get<LightRef>().Light = _flashlightLight;
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public struct FlashlightComponent
+public struct LightRef
 {
     public Light Light;
 }
