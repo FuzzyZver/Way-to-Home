@@ -5,6 +5,6 @@ using UnityEngine;
 public class SceneData : MonoBehaviour
 {
     public PlayerActor Player;
-    public InteractionActor Character;
     public NavMeshSurface NavMeshSurface;
+    public InteractionActor[] Interactions;
 }

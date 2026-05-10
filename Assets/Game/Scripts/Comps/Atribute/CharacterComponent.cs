@@ -3,6 +3,6 @@ using UnityEngine;
 
 public struct CharacterComponent
 {
-    public int CharacterId;
-    public List<bool> CompleteDialogs;
+    public CharacterType CharacterType;
+    public HashSet<int> CompletedDialogs;
 }

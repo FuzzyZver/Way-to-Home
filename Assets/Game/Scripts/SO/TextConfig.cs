@@ -9,19 +9,6 @@ public class TextConfig : ScriptableObject
     public float UISlowMoveDuration;
     public float UIFastMoveDuration;
 
-    public List<DialogueGroup> FirstCharacterDialogs;
+    public List<CharacterDialogData> Characters;
 }
 
-[System.Serializable]
-public class DialogueLine
-{
-    public string characterName;
-    [TextArea(4, 10)]
-    public string text;
-}
-
-[System.Serializable]
-public class DialogueGroup
-{
-    public List<DialogueLine> Lines;
-}

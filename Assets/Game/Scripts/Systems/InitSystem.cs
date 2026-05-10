@@ -2,21 +2,16 @@ using System.Collections.Generic;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class InitSystem: Injects, IEcsPreInitSystem
 {
     public void PreInit()
     {
         SceneData.Player.Init(EcsWorld);
-        SceneData.Character.Init(EcsWorld);
-        SceneData.Character.GetEntity().Get<CharacterComponent>() = new CharacterComponent
+        foreach(var character in SceneData.Interactions)
         {
-            CharacterId = 1,
-            CompleteDialogs = new List<bool>()
-        };
-        foreach(DialogueGroup dialogueGroup in GameConfig.TextConfig.FirstCharacterDialogs)
-        {
-            SceneData.Character.GetEntity().Get<CharacterComponent>().CompleteDialogs.Add(false);
+            character.Init(EcsWorld);
         }
 
         //Render fog init

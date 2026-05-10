@@ -1,8 +1,7 @@
 using Leopotam.Ecs;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TextDialogSystem: Injects, IEcsInitSystem, IEcsRunSystem
+public class TextDialogSystem : Injects, IEcsInitSystem, IEcsRunSystem
 {
     private EcsFilter<TextDialogEvent> _textDialogEventFilter;
     private EcsFilter<ContinueInputEvent> _continueInputEventFilter;
@@ -46,24 +45,25 @@ public class TextDialogSystem: Injects, IEcsInitSystem, IEcsRunSystem
 
         foreach (int i in _textDialogEventFilter)
         {
-            var characterEntity = _textDialogEventFilter.Get1(i).InteractionActor.GetEntity();
+            var characterEntity = _textDialogEventFilter.Get1(i).CharacterEntity;
             var characterCameraTarget = characterEntity.Get<CameraTargetRef>().Transform;
             ref var charComp = ref characterEntity.Get<CharacterComponent>();
 
-            for (int j = 0; j < charComp.CompleteDialogs.Count; j++)
+            var characterDialogData = _textConfig.Characters.Find(data => data.CharacterType == characterEntity.Get<CharacterComponent>().CharacterType);
+
+            if (characterDialogData == null) continue;
+
+            for (int j = 0; j < characterDialogData.Dialogues.Count; j++)
             {
-                if (!charComp.CompleteDialogs[j])
+                if (!charComp.CompletedDialogs.Contains(j))
                 {
-                    if (charComp.CharacterId == 1)
-                    {
-                        _currentDialog = _textConfig.FirstCharacterDialogs[j];
-                    }
+                    _currentDialog = characterDialogData.Dialogues[j];
                     _currentDialogScreen = GameObject.Instantiate(_textConfig.TextDialogScreen, UI.transform);
                     _currentDialogScreen.StartDialog();
                     playerEntity.Get<FreezeFlag>();
                     playerEntity.Get<CameraFocusFlag>().Transform = characterCameraTarget;
                     Dialog();
-                    charComp.CompleteDialogs[j] = true;
+                    charComp.CompletedDialogs.Add(j);
                     break;
                 }
             }

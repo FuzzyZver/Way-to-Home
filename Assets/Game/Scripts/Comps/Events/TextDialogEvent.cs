@@ -1,6 +1,7 @@
+using Leopotam.Ecs;
 using UnityEngine;
 
 public struct TextDialogEvent
 {
-    public InteractionActor InteractionActor;
+    public EcsEntity CharacterEntity;
 }

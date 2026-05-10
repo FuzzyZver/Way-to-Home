@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb9ba4ccbb6ec3419dcdebd53ce0e2c, type: 3}
   m_Name: CommonConfig
   m_EditorClassIdentifier: Assembly-CSharp::CommonConfig
-  FogDensity: 0.2
+  FogDensity: 0.05
   FogFrameRate: 30
   FogColor: {r: 0.3886792, g: 0.38061228, b: 0.38061228, a: 0}
   FogMode: 2
