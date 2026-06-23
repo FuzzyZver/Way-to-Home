@@ -7,4 +7,5 @@ public class SceneData : MonoBehaviour
     public PlayerActor Player;
     public NavMeshSurface NavMeshSurface;
     public InteractionActor[] Interactions;
+    public List<Light> Lights;
 }

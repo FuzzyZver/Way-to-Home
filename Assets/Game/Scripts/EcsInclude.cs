@@ -38,6 +38,7 @@ public class EcsInclude : MonoBehaviour
             .Add(new AudioEffectsSystem())
             .Add(new BlinkingLightSystem())
             .Add(new ObjectActivatesSystem())
+            .Add(new LightsTrackerSystem())
 
             //OneFrame<..
             .OneFrame<MoveInputEvent>()

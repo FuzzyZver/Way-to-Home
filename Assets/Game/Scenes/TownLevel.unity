@@ -34395,6 +34395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneData
   Player: {fileID: 1525353706}
   NavMeshSurface: {fileID: 931422760}
+  Interactions: []
 --- !u!114 &649908613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84514,7 +84515,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 664864396165295029, guid: ebf1170053f481343a79a8b4685f7c19, type: 3}
       propertyPath: m_Name
-      value: Mila
+      value: Lina
       objectReference: {fileID: 0}
     - target: {fileID: 961470766430423733, guid: ebf1170053f481343a79a8b4685f7c19, type: 3}
       propertyPath: m_LocalPosition.x

@@ -16,5 +16,6 @@ public class PlayerActor: Actor
         entity.Get<CameraRef>().Camera = _camera;
         entity.Get<CameraTargetRef>().Transform = _cameraTargetTransform;
         entity.Get<LightRef>().Light = _flashlightLight;
+        entity.Get<PlayerLightMetrics>();
     }
 }

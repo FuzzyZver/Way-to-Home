@@ -9,34 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d78fe419c74874aaa9aed5c6861875, type: 3}
+  m_Script: {fileID: 11500000, guid: e22a8bc5f993d2a41bd44dc440952bca, type: 3}
   m_Name: TextConfig
   m_EditorClassIdentifier: Assembly-CSharp::TextConfig
   TextDialogScreen: {fileID: 8635052399338036794, guid: bd8e16e7cd78d384498e451498e6baeb, type: 3}
-  TextTypingDuration: 0.3
-  UISlowMoveDuration: 1
+  TextTypingDuration: 0.4
+  UISlowMoveDuration: 0.5
   UIFastMoveDuration: 0.5
   Characters:
   - CharacterType: 2
     Dialogues:
     - Lines:
-      - characterName: "\u041C\u0438\u043B\u044F"
-        text: "\u041F\u0440\u0438\u0432\u0435\u0442"
-      - characterName: "\u0422\u044B"
-        text: "\u041F\u0440\u0438\u0432\u0435\u0442"
-    - Lines:
-      - characterName: "\u041C\u0438\u043B\u044F"
-        text: "\u041F\u0440\u0438\u0432\u0435\u0442"
-      - characterName: "\u0422\u044B"
-        text: "\u041F\u0440\u0438\u0432\u0435\u0442"
-  - CharacterType: 8
-    Dialogues:
-    - Lines:
-      - characterName: ...
-        text: "\u041C\u043D\u0435 \u0442\u0443\u0434\u0430 \u043D\u0435 \u043D\u0430\u0434\u043E"
-    - Lines:
-      - characterName: ...
-        text: "\u0425\u0430\u0445"
-      - characterName: ...
-        text: "\u041D\u0435 \u0434\u0443\u043C\u0430\u044E, \u0447\u0442\u043E \u043C\u043D\u0435
-          \u0442\u0443\u0434\u0430 \u0441\u0442\u043E\u0438\u0442 \u0438\u0434\u0442\u0438"
+      - characterName: awdwd
+        text: wdwdd
