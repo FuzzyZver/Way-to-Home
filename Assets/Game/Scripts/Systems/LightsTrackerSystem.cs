@@ -9,16 +9,22 @@ public class LightsTrackerSystem: Injects, IEcsInitSystem, IEcsRunSystem
     private float _lightCheckTimer;
     private bool _wasInLightLastFrame;
     private float _startTime;
-    private float _raycastCheckInterval = 0.2f;
+    private float _raycastCheckInterval;
 
     private List<float> _levelLightHistory = new List<float>();
-    private float _lightThreshold = 0.35f;
+    private float _lightThreshold;
+    private float _spotAngleMultiplier;
+    private float _lightIntensityNormality;
 
     public void Init()
     {
         _startTime = Time.time;
         _wasInLightLastFrame = false;
         _player = SceneData.Player;
+        _raycastCheckInterval = GameConfig.PlayerMetricsConfig.RaycastCheckInterval;
+        _lightThreshold = GameConfig.PlayerMetricsConfig.LightThreshold;
+        _spotAngleMultiplier = GameConfig.PlayerMetricsConfig.SpotAngleMultiplier;
+        _lightIntensityNormality = GameConfig.PlayerMetricsConfig.LightIntensityNormality;
     }
 
     public void Run()
@@ -45,30 +51,26 @@ public class LightsTrackerSystem: Injects, IEcsInitSystem, IEcsRunSystem
         lightMetricsComp.IsCurrentlyInLight = isInLight;
         _levelLightHistory.Add(currentLightLevel);
 
-        //Отслеживаю переход от темноты к свету и наоборот
         if (isInLight && !_wasInLightLastFrame)
             lightMetricsComp.DarkToLightTransitions++;
         else if (!isInLight && _wasInLightLastFrame)
             lightMetricsComp.LightToDarkTransitions++;
 
-        //Счет времени в темноте и на свету
         if (isInLight)
             lightMetricsComp.TotalTimeInLight += _raycastCheckInterval;
         else
             lightMetricsComp.TotalTimeInDark += _raycastCheckInterval;
 
         float sum = 0f;
-        foreach(var level in _levelLightHistory)
+        foreach (var level in _levelLightHistory)
         {
             sum += level;
         }
-        lightMetricsComp.AverageLightLevel = sum / _levelLightHistory.Count > 0 ? sum / _levelLightHistory.Count : 0f;
+        lightMetricsComp.AverageLightLevel = _levelLightHistory.Count > 0 ? sum / _levelLightHistory.Count : 0f;
 
         float totalTime = lightMetricsComp.TotalTimeInLight + lightMetricsComp.TotalTimeInDark;
         lightMetricsComp.LightPreferencesRatio = totalTime > 0 ? lightMetricsComp.TotalTimeInLight / totalTime : 0.5f;
         _wasInLightLastFrame = isInLight;
-
-
     }
 
     private float CalculateLightLevel()
@@ -97,19 +99,19 @@ public class LightsTrackerSystem: Injects, IEcsInitSystem, IEcsRunSystem
                 if (Physics.Raycast(samplePoint, dirToLight, distance))
                     continue;
 
-                float normalizedIntensity = Mathf.Clamp01(light.intensity / 10f);
+                float normalizedIntensity = Mathf.Clamp01(light.intensity / _lightIntensityNormality);
 
                 float normalizedDistance = distance / light.range;
-                float falloff = Mathf.Pow(1f - normalizedDistance, 2f);
+                float falloff = Mathf.Exp(-normalizedDistance * normalizedDistance);
 
                 float intensity = normalizedIntensity * falloff;
 
                 if (light.type == LightType.Spot)
                 {
                     float angleToLight = Vector3.Angle(light.transform.forward, -dirToLight);
-                    if (angleToLight > light.spotAngle * 0.5f) continue;
+                    if (angleToLight > light.spotAngle * _spotAngleMultiplier) continue;
 
-                    float angleFalloff = 1f - (angleToLight / (light.spotAngle * 0.5f));
+                    float angleFalloff = 1f - (angleToLight / (light.spotAngle * _spotAngleMultiplier));
                     intensity *= angleFalloff;
                 }
 

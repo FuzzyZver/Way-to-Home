@@ -10,4 +10,6 @@ public class GameConfig : ScriptableObject
     public CommonConfig CommonConfig;
     public SoundStepConfig SoundStepConfig;
     public SoundConfig SoundConfig;
+    public PlayerMetricsConfig PlayerMetricsConfig;
+    public NarrativeConfig NarrativeConfig;
 }

@@ -19,3 +19,5 @@ MonoBehaviour:
   CommonConfig: {fileID: 11400000, guid: 2277b6ed3baa51842bdc8806822bc7eb, type: 2}
   SoundStepConfig: {fileID: 11400000, guid: 7d278dfc3eacb344c824c631a4223f3e, type: 2}
   SoundConfig: {fileID: 11400000, guid: bf58fb642dbea134194b6ef1ba2757ce, type: 2}
+  PlayerMetricsConfig: {fileID: 11400000, guid: 31daa08e513e5d74db7cf7545b8d2744, type: 2}
+  NarrativeConfig: {fileID: 11400000, guid: fcff7a8d6368ab449bc3ebd01bc68404, type: 2}

@@ -47,7 +47,7 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
         if (_scrollInputAction != null)
             _scrollInputAction.performed += OnScrollInput;
         else
-            Debug.LogError($"[INPUT SYSTEM] Key tag |{scrollKeyTag}| for jump is not recognized!" +
+            Debug.LogError($"[INPUT SYSTEM] Key tag |{scrollKeyTag}| for scroll is not recognized!" +
                                "Please check Input Config or Input System Settings!");
 
         string continueKeyTag = GameConfig.InputConfig.ContinueKeyTag;
@@ -55,7 +55,7 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
         if (_continueInputAction != null)
             _continueInputAction.performed += OnContinueKeyPress;
         else
-            Debug.LogError($"[INPUT SYSTEM] Key tag |{continueKeyTag}| for interaction is not recognized!" +
+            Debug.LogError($"[INPUT SYSTEM] Key tag |{continueKeyTag}| for continue is not recognized!" +
                                "Please check Input Config or Input System Settings!");
 
         _moveInputAction.Enable();

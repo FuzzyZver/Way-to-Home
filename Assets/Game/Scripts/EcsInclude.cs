@@ -39,6 +39,15 @@ public class EcsInclude : MonoBehaviour
             .Add(new BlinkingLightSystem())
             .Add(new ObjectActivatesSystem())
             .Add(new LightsTrackerSystem())
+            
+            //Narrative Occlusion
+            .Add(new ObserverSystem())
+            .Add(new NarrativeDirectorSystem())
+            .Add(new WorldExecutor())
+
+#if DEV_OVERLAY
+            .Add(new DirectorOverlayBridgeSystem())
+#endif
 
             //OneFrame<..
             .OneFrame<MoveInputEvent>()
@@ -51,6 +60,7 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<ContinueInputEvent>()
             .OneFrame<GetEnemyPoolEvent>()
             .OneFrame<AudioEffectEvent>()
+            .OneFrame<DebugEvent>()
 
 
             .Inject(_world)
