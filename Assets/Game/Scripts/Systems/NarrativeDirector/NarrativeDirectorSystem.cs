@@ -9,11 +9,13 @@ public class NarrativeDirectorSystem: Injects, IEcsInitSystem, IEcsRunSystem
     private NarrativeConfig _narrativeConfig;
     private float _lastUpdateTime;
     private float _updateInterval;
+    private float _freshes;
 
     public void Init()
     {
         _narrativeConfig = GameConfig.NarrativeConfig;
         _updateInterval = _narrativeConfig.NarrativeUpdateInterval;
+        _freshes = _narrativeConfig.FreshesCommand;
         for (int id = 0; id < _narrativeConfig.Commands.Count; id++)
         {
             EcsEntity entity = EcsWorld.NewEntity();
@@ -41,6 +43,7 @@ public class NarrativeDirectorSystem: Injects, IEcsInitSystem, IEcsRunSystem
             ref var playerModel = ref _playerModelFilter.Get1(i);
             ThemeId currentTheme = GetCurrentTheme(in playerModel);
             var currentCommand = CommandGamble(currentTheme);
+            if (currentCommand == null) continue;
             currentCommand.Get<CommandOnBoardFlag>();
             currentCommand.Get<Command>().LastTimeUsed = Time.time;
         }
@@ -76,21 +79,22 @@ public class NarrativeDirectorSystem: Injects, IEcsInitSystem, IEcsRunSystem
         foreach (int i in _commandsReadyFilter)
         {
             ref var commandComp = ref _commandsReadyFilter.Get1(i);
-            float score = 1f;
 
+            float themeFit = 0.1f;
             foreach(var commandFit in commandComp.ThemeFits)
             {
                 if(commandFit.ThemeId == currentTheme)
                 {
-                    score *= 0.5f;
+                    themeFit = commandFit.Fit;
                     break;
                 }
             }
-            score = (commandComp.Credibility * score) - Mathf.Clamp01(commandComp.LastTimeUsed);
+            float fresh = Mathf.Clamp01((Time.time - commandComp.LastTimeUsed) / _freshes);
+            float score = commandComp.Credibility * themeFit * fresh;
             commandComp.CurrentScore = Mathf.Clamp01(score);
             if (score > bestScore)
             {
-                bestScore = score;
+               bestScore = score;
                bestCommandEntity = _commandsReadyFilter.GetEntity(i);
             }
         }

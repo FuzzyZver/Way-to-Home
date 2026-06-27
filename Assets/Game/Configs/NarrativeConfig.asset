@@ -44,28 +44,19 @@ MonoBehaviour:
   - Name: LightOff
     CurrentScore: 0
     Type: 1
-    Cooldown: 3
+    Cooldown: 6
     LastTimeUsed: 0
     Credibility: 0.7
     ThemeFits:
     - ThemeId: 1
       Fit: 1
-  - Name: MoveBuilding
-    CurrentScore: 0
-    Type: 0
-    Cooldown: 3
-    LastTimeUsed: 0
-    Credibility: 0.2
-    ThemeFits:
-    - ThemeId: 1
-      Fit: 0.4
-  - Name: Scream
+  - Name: none
     CurrentScore: 0
     Type: 0
     Cooldown: 0
     LastTimeUsed: 0
-    Credibility: 0.4
+    Credibility: 0
     ThemeFits:
-    - ThemeId: 1
-      Fit: 0.6
-  NarrativeUpdateInterval: 1
+    - ThemeId: 0
+      Fit: 0.1
+  NarrativeUpdateInterval: 5

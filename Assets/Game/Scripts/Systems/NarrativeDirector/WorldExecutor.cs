@@ -12,15 +12,15 @@ public class WorldExecutor: Injects, IEcsRunSystem
         {
             var commandEntity = _commandOnBoardFlagFilter.GetEntity(i);
             ref var command = ref _commandOnBoardFlagFilter.Get1(i);
-            ExecuteCommand(in command);
             commandEntity.Del<CommandOnBoardFlag>();
             commandEntity.Get<CommandActiveFlag>();
+            ExecuteCommand(in command);
         }
 
         foreach (int i in _commandActiveFlagFilter)
         {
             ref var command = ref _commandActiveFlagFilter.Get1(i);
-            if (Time.time - command.LastTimeUsed < command.Cooldown)
+            if (Time.time - command.LastTimeUsed > command.Cooldown)
             {
                 var commandEntity = _commandActiveFlagFilter.GetEntity(i);
                 commandEntity.Del<CommandActiveFlag>();
@@ -46,7 +46,6 @@ public class WorldExecutor: Injects, IEcsRunSystem
                     Message = $"[WORLD EXECUTOR] Executing command {command.Type}",
                     Type = DebugType.Info
                 };
-                Debug.Log($"[WORLD EXECUTOR] Executing command {command.Type}");
 
                 int probability = Random.Range(0, 3);
                 var entity = EcsWorld.NewEntity();
@@ -57,7 +56,6 @@ public class WorldExecutor: Injects, IEcsRunSystem
                     Duration = command.Cooldown,
                     GameObject = gameObject
                 };
-
                 break;
             default:
                 EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent

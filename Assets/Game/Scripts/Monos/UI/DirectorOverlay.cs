@@ -14,6 +14,9 @@ bool _show = false;
     GUIStyle _style;
     EcsEntity _playerModelEntity;
     EcsEntity _playerEntity;
+    List<ToastView> _toasts;
+    List<string> _activeCommands;
+    int _removeRequest = -1;
 
     void Start()
     {
@@ -36,24 +39,74 @@ bool _show = false;
         if (!_show) return;
         _style ??= new GUIStyle(GUI.skin.label) { fontSize = 12, richText = true };
 
+        DrawDirectorPanel();
+        DrawToasts();
+    }
+
+    void DrawDirectorPanel()
+    {
         GUILayout.BeginArea(new Rect(10, 10, 360, Screen.height - 20), GUI.skin.box);
-        ref var modelComp = ref _playerModelEntity.Get<PlayerModel>();
-        if (!_playerModelEntity.IsAlive() || !_playerEntity.IsAlive())
+
+        if (!_playerModelEntity.IsAlive())
         {
             GUILayout.Label("<no player entity>", _style);
-            GUILayout.EndArea();
-            return;
         }
-        GUILayout.Label($"Composure: {modelComp.Composure:F3}", _style);
+        else
+        {
+            ref var m = ref _playerModelEntity.Get<PlayerModel>();
+            GUILayout.Label("<b>PLAYER METRICS</b>", _style);
+            GUILayout.Space(4);
+            GUILayout.Label($"Player Entity: {_playerEntity.Get<PlayerLightMetrics>().LightPreferencesRatio}", _style);
+            GUILayout.Space(4);
+            GUILayout.Label("<b>PLAYER MODEL</b>", _style);
+            GUILayout.Space(4);
+            GUILayout.Label($"Composure: {m.Composure}", _style);
+        }
+
         GUILayout.Space(10);
-        GUILayout.Label($"Player Entity: {_playerEntity.Get<PlayerLightMetrics>().LightPreferencesRatio}", _style);
+        GUILayout.Label("<b>ACTIVE COMMANDS</b>", _style);
+        if (_activeCommands == null || _activeCommands.Count == 0)
+            GUILayout.Label("  <color=#888888>— none —</color>", _style);
+        else
+            for (int i = 0; i < _activeCommands.Count; i++)
+                GUILayout.Label($"  * {_activeCommands[i]}", _style);
+
         GUILayout.EndArea();
     }
 
-    public void CaptureFrame(EcsEntity playerEntity, EcsEntity modelEntity)
+    void DrawToasts()
+    {
+        if (_toasts == null) return;
+
+        const float w = 320f;
+        GUILayout.BeginArea(new Rect(Screen.width - w - 10, 10, w, Screen.height - 20));
+
+        for (int i = 0; i < _toasts.Count; i++)
+        {
+            GUILayout.BeginHorizontal(GUI.skin.box);
+            GUILayout.Label(_toasts[i].Text, _style);
+            GUILayout.FlexibleSpace();
+            if (GUILayout.Button("X", GUILayout.Width(22)))
+                _removeRequest = i;
+            GUILayout.EndHorizontal();
+        }
+
+        GUILayout.EndArea();
+    }
+
+    public void CaptureFrame(EcsEntity playerEntity,EcsEntity model, List<ToastView> toasts, List<string> activeCommands)
     {
         _playerEntity = playerEntity;
-        _playerModelEntity = modelEntity;
+        _playerModelEntity = model;
+        _toasts = toasts;
+        _activeCommands = activeCommands;
+    }
+
+    public int ConsumeRemoveRequest()
+    {
+        int r = _removeRequest;
+        _removeRequest = -1;
+        return r;
     }
 
 #endif
