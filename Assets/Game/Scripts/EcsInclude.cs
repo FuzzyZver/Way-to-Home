@@ -40,6 +40,7 @@ public class EcsInclude : MonoBehaviour
             .Add(new ObjectActivatesSystem())
             .Add(new LightsTrackerSystem())
             .Add(new LookBackTrackerSystem())
+            .Add(new FearFreezeTrackerSystem())
             
             //Narrative Occlusion
             .Add(new ObserverSystem())

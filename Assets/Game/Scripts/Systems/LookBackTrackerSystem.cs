@@ -27,8 +27,9 @@ public class LookBackTrackerSystem: Injects, IEcsInitSystem, IEcsRunSystem
 
         ref var metricsComp = ref playerEntity.Get<PlayerLookBackMetrics>();
         _remainingEvents.RemoveAll(ev => ev >= _playerMetricsConfig.RotationFrequencyWindow);
-        metricsComp.Frequency = Mathf.Clamp01(_remainingEvents.Count / _playerMetricsConfig.RotationFrequencyWindow);
-
+        float frequency = 0.1f;
+        if (_remainingEvents.Count != 0) frequency = Mathf.Clamp01(_remainingEvents.Count / _playerMetricsConfig.RotationFrequencyWindow);
+        metricsComp.Frequency = frequency;
         while (_angleQueue.Count > 0 && Time.time - _angleQueue.Peek().timestamp > 1f)
         {
             _angleQueue.Dequeue();

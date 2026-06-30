@@ -18,4 +18,9 @@ MonoBehaviour:
   SpotAngleMultiplier: 0.5
   RotationFrequencyWindow: 60
   RotationAngleThreshold: 120
-  RotationTimeThreshold: 0.5
+  RotationTimeThreshold: 0.3
+  FreezeFrequencyWindow: 10
+  FreezeAngleThreshold: 1
+  FreezeDistanceThreshold: 1
+  FreezeTimeTrheshold: 2
+  FearFreezeThreshold: 0.01

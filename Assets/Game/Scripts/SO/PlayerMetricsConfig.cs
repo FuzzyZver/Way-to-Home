@@ -13,4 +13,11 @@ public class PlayerMetricsConfig : ScriptableObject
     public float RotationFrequencyWindow;
     public float RotationAngleThreshold;
     public float RotationTimeThreshold;
+
+    [Header("Fear freeze traching props")]
+    public float FreezeFrequencyWindow;
+    public float FreezeAngleThreshold;
+    public float FreezeDistanceThreshold;
+    public float FreezeTimeTrheshold;
+    public float FearFreezeThreshold;
 }
