@@ -16,3 +16,6 @@ MonoBehaviour:
   LightThreshold: 0.2
   LightIntensityNormality: 3
   SpotAngleMultiplier: 0.5
+  RotationFrequencyWindow: 60
+  RotationAngleThreshold: 120
+  RotationTimeThreshold: 0.5

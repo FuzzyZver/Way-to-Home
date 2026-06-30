@@ -41,13 +41,8 @@ public class WorldExecutor: Injects, IEcsRunSystem
                 };
                 break;
             case CommandType.LightOff:
-                EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent
-                {
-                    Message = $"[WORLD EXECUTOR] Executing command {command.Type}",
-                    Type = DebugType.Info
-                };
 
-                int probability = Random.Range(0, 3);
+                int probability = Random.Range(0, SceneData.Lights.Count);
                 var entity = EcsWorld.NewEntity();
                 var gameObject = SceneData.Lights[probability].gameObject;
                 gameObject.SetActive( false );

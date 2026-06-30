@@ -39,6 +39,7 @@ public class EcsInclude : MonoBehaviour
             .Add(new BlinkingLightSystem())
             .Add(new ObjectActivatesSystem())
             .Add(new LightsTrackerSystem())
+            .Add(new LookBackTrackerSystem())
             
             //Narrative Occlusion
             .Add(new ObserverSystem())

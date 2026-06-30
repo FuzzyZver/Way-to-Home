@@ -1509,6 +1509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneData
   Player: {fileID: 1640774291}
+  Camera: {fileID: 330585545}
   NavMeshSurface: {fileID: 1865329697}
   Interactions:
   - {fileID: 711696224}

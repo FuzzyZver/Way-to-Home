@@ -49,14 +49,6 @@ MonoBehaviour:
     Credibility: 0.7
     ThemeFits:
     - ThemeId: 1
-      Fit: 1
-  - Name: none
-    CurrentScore: 0
-    Type: 0
-    Cooldown: 0
-    LastTimeUsed: 0
-    Credibility: 0
-    ThemeFits:
-    - ThemeId: 0
-      Fit: 0.1
-  NarrativeUpdateInterval: 5
+      Fit: 0.9
+  NarrativeUpdateInterval: 2
+  FreshesCommand: 0.3
