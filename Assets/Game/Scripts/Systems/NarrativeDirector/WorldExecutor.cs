@@ -52,6 +52,9 @@ public class WorldExecutor: Injects, IEcsRunSystem
                     GameObject = gameObject
                 };
                 break;
+            //case CommandType.FootstepsBehind:
+            //    //код для команды FootstepsBehind
+            //    break;
             default:
                 EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent
                 {

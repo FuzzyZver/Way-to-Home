@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc89ec71209e80b4a893c610e486586d, type: 3}
-  m_Name: SoundConfig
-  m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
-  Volume: 1
-  MusicVolume: 0
-  SFXVolume: 0
-  CreepySounds: []
+  m_Script: {fileID: 11500000, guid: 7167e5a454508184daf712c998b5db93, type: 3}
+  m_Name: ExecutionConfig
+  m_EditorClassIdentifier: Assembly-CSharp::ExecutionConfig
+  StepsOffset: 5
+  SpeedMultiplier: 0.8
+  RotationAngleThreshold: 5
+  StepRotationTimeThreshold: 0.5

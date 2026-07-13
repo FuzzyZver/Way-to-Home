@@ -12,7 +12,7 @@ public class FearFreezeTrackerSystem: Injects, IEcsInitSystem, IEcsRunSystem
     public void Init()
     {
         _player = SceneData.Player;
-        _player.GetEntity().Get<FearFreezeMetric>().LastLookDirection = _player.GetEntity().Get<CameraTargetRef>().Transform.forward;
+        _player.GetEntity().Get<FearFreezeMetrics>().LastLookDirection = _player.GetEntity().Get<CameraTargetRef>().Transform.forward;
         _playerMetricsConfig = GameConfig.PlayerMetricsConfig;
     }
 
@@ -29,7 +29,7 @@ public class FearFreezeTrackerSystem: Injects, IEcsInitSystem, IEcsRunSystem
         }
         if (_activityQueue.Count > 0)
         {
-            ref var metricsComp = ref playerEntity.Get<FearFreezeMetric>();
+            ref var metricsComp = ref playerEntity.Get<FearFreezeMetrics>();
             float averageAngle  = _activityQueue.Sum(aq => aq.angle) / _activityQueue.Count;
             float averageDistance = _activityQueue.Sum(aq => aq.distance) / _activityQueue.Count;
 
@@ -49,7 +49,7 @@ public class FearFreezeTrackerSystem: Injects, IEcsInitSystem, IEcsRunSystem
 
     private void FreezeTraching(EcsEntity playerEntity)
     {
-        ref var metricsComp = ref playerEntity.Get<FearFreezeMetric>();
+        ref var metricsComp = ref playerEntity.Get<FearFreezeMetrics>();
         var playerTransform = playerEntity.Get<TransformRef>().Transform;
         Transform cameraTransform = playerEntity.Get<CameraTargetRef>().Transform;
         Vector3 lastLookDirection = metricsComp.LastLookDirection;

@@ -12,4 +12,5 @@ public class GameConfig : ScriptableObject
     public SoundConfig SoundConfig;
     public PlayerMetricsConfig PlayerMetricsConfig;
     public NarrativeConfig NarrativeConfig;
+    public ExecutionConfig ExecutionConfig;
 }

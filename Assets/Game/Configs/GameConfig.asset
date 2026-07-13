@@ -21,3 +21,4 @@ MonoBehaviour:
   SoundConfig: {fileID: 11400000, guid: bf58fb642dbea134194b6ef1ba2757ce, type: 2}
   PlayerMetricsConfig: {fileID: 11400000, guid: 31daa08e513e5d74db7cf7545b8d2744, type: 2}
   NarrativeConfig: {fileID: 11400000, guid: fcff7a8d6368ab449bc3ebd01bc68404, type: 2}
+  ExecutionConfig: {fileID: 11400000, guid: 7580fc291c868354ca99b20309cc1eea, type: 2}

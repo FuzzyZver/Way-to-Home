@@ -1,7 +1,7 @@
 using Leopotam.Ecs;
 using UnityEngine;
 
-public class StepSoundSystem: Injects, IEcsInitSystem, IEcsRunSystem
+public class StepSoundSystem : Injects, IEcsInitSystem, IEcsRunSystem
 {
     private readonly EcsFilter<MoveFlag, TransformRef> _stepSoundFilter;
 
@@ -30,7 +30,6 @@ public class StepSoundSystem: Injects, IEcsInitSystem, IEcsRunSystem
             {
                 _passedDistance = 0;
 
-                // Проверка на землю
                 if (Physics.Raycast(transformRef.Transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hit, 1.2f))
                 {
                     var mat = hit.collider.sharedMaterial;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public struct FearFreezeMetric
+public struct FearFreezeMetrics
 {
     public Vector3 LastLookDirection;
     public Vector3 LastPosition;

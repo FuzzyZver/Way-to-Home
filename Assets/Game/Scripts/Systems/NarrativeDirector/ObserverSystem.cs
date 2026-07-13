@@ -18,11 +18,12 @@ public class ObserverSystem: Injects, IEcsInitSystem, IEcsRunSystem
         var playerEntity = _player.GetEntity();
         ref var lightMetricComp = ref playerEntity.Get<PlayerLightMetrics>();
         ref var lookBackMetricsComp = ref playerEntity.Get<PlayerLookBackMetrics>();
+        ref var freezeMetric = ref playerEntity.Get<FearFreezeMetrics>();
 
         _observer.Get<PlayerModel>().Composure = Mathf.Clamp01(
             lightMetricComp.LightPreferencesRatio*
             lookBackMetricsComp.Frequency*
-            FearFreezeMetric.FearFreeze
+            freezeMetric.FearFreeze
             );
         //позже будут добавлятьсяи прочие метрики, влияющие на страх через сложение (lightMetricComp.LightPreferencesRatio+...)
     }

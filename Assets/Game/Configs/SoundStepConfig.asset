@@ -21,3 +21,10 @@ MonoBehaviour:
     - {fileID: 8300000, guid: c82da87d15641194fb28fef32ca6b2ab, type: 3}
     - {fileID: 8300000, guid: 208fdafc28ba281469939f6ab2bd0d92, type: 3}
     - {fileID: 8300000, guid: 783e305207f1efc49b089fb0f9c50647, type: 3}
+  - material: {fileID: 13400000, guid: bac0fbf610dcdd94ca2ba97553f7ffec, type: 2}
+    clips:
+    - {fileID: 8300000, guid: 10c59beec71351a4cb87c2f66a146e86, type: 3}
+    - {fileID: 8300000, guid: a717ab55c08695247b41dc421f2131a2, type: 3}
+    - {fileID: 8300000, guid: 721263a7ae31a5743823a58d17ed0a82, type: 3}
+    - {fileID: 8300000, guid: a7117dd25881a4043ad43c3a1d98b23f, type: 3}
+    - {fileID: 8300000, guid: ae85a644e70f9fc43a4dd93109838c08, type: 3}

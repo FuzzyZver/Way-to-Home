@@ -34,8 +34,10 @@ public class MovementSystem : Injects, IEcsInitSystem, IEcsRunSystem
             var playerRigidbody = playerEntity.Get<RigidbodyRef>().Rigidbody;
             var targetRbVelocity = new Vector3(targetVelocity.x, playerRigidbody.linearVelocity.y, targetVelocity.y);
             playerRigidbody.linearVelocity = playerRigidbody.transform.rotation * targetRbVelocity;
+            float VELOCITY_EPSILON = 0.01f;
 
-            if (targetVelocity.x > 0 || targetVelocity.y > 0)
+            if (Mathf.Abs(targetVelocity.x) > VELOCITY_EPSILON ||
+                Mathf.Abs(targetVelocity.y) > VELOCITY_EPSILON)
             {
                 playerEntity.Get<MoveFlag>();
             }

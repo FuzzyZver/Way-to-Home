@@ -35,13 +35,18 @@ public class EcsInclude : MonoBehaviour
             .Add(new EnemyPoolSystem())
             .Add(new CameraFocusSystem())
             .Add(new StepSoundSystem())
-            .Add(new AudioEffectsSystem())
             .Add(new BlinkingLightSystem())
             .Add(new ObjectActivatesSystem())
+            //Trackers
             .Add(new LightsTrackerSystem())
             .Add(new LookBackTrackerSystem())
             .Add(new FearFreezeTrackerSystem())
-            
+            //Executors
+            .Add(new FootstepsBehindExecutorSystem())
+
+
+            .Add(new AudioEffectsSystem())
+
             //Narrative Occlusion
             .Add(new ObserverSystem())
             .Add(new NarrativeDirectorSystem())
