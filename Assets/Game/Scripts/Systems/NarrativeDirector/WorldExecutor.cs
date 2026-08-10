@@ -42,15 +42,15 @@ public class WorldExecutor: Injects, IEcsRunSystem
                 break;
             case CommandType.LightOff:
 
-                int probability = Random.Range(0, SceneData.Lights.Count);
-                var entity = EcsWorld.NewEntity();
-                var gameObject = SceneData.Lights[probability].gameObject;
-                gameObject.SetActive( false );
-                entity.Get<ActivatesFlag>() = new ActivatesFlag
-                {
-                    Duration = command.Cooldown,
-                    GameObject = gameObject
-                };
+                //int probability = Random.Range(0, SceneData.Lights.Count);
+                //var entity = EcsWorld.NewEntity();
+                //var gameObject = SceneData.Lights[probability].gameObject;
+                //gameObject.SetActive( false );
+                //entity.Get<ActivatesFlag>() = new ActivatesFlag
+                //{
+                //    Duration = command.Cooldown,
+                //    GameObject = gameObject
+                //};
                 break;
             //case CommandType.FootstepsBehind:
             //    //код для команды FootstepsBehind
