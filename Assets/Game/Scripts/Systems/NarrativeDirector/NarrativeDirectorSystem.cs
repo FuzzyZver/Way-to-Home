@@ -43,9 +43,10 @@ public class NarrativeDirectorSystem: Injects, IEcsInitSystem, IEcsRunSystem
             ref var playerModel = ref _playerModelFilter.Get1(i);
             ThemeId currentTheme = GetCurrentTheme(in playerModel);
             var currentCommand = CommandGamble(currentTheme);
-            if (currentCommand == null) continue;
+            if (currentCommand == EcsEntity.Null) continue;
             currentCommand.Get<CommandOnBoardFlag>();
             currentCommand.Get<Command>().LastTimeUsed = Time.time;
+            currentCommand.Del<CommandReadyFlag>();
         }
     }
 

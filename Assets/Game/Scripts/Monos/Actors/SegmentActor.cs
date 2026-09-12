@@ -3,16 +3,16 @@ using UnityEngine;
 using Leopotam.Ecs;
 
 [System.Serializable]
-public class SegmentAnchor
+public class SegmentObjects
 {
-    public string Tag;
-    public Transform Point;
+    public SegmentObjectsType Type;
+    public GameObject Object;
 }
 
 public class SegmentActor : Actor
 {
     [SerializeField] private string _segmentId;
-    [SerializeField] private List<SegmentAnchor> _anchors = new List<SegmentAnchor>();
+    [SerializeField] private List<SegmentObjects> _objects = new List<SegmentObjects>();
 
     public override void ExpandEntity(EcsEntity entity)
     {
@@ -20,6 +20,7 @@ public class SegmentActor : Actor
         {
             SegmentId = string.IsNullOrEmpty(_segmentId) ? gameObject.name : _segmentId,
             Actor = this,
+            Objects = _objects,
             Position = SegmentRelativePosition.Behind,
             Familiarity = 0f,
             TimeSinceLastVisit = float.MaxValue,
