@@ -43,6 +43,8 @@ public class EcsInclude : MonoBehaviour
             .Add(new FearFreezeTrackerSystem())
             //Executors
             .Add(new FootstepsBehindExecutorSystem())
+            .Add(new LightOffExecutorSystem())
+            .Add(new LightRestoreSystem())
 
 
             .Add(new AudioEffectsSystem())
