@@ -13,6 +13,10 @@ public class InitSystem: Injects, IEcsPreInitSystem
         {
             character.Init(EcsWorld);
         }
+        foreach(var segment in SceneData.Segments)
+        {
+            segment.Init(EcsWorld);
+        }
 
         //Render fog init
         RenderSettings.fog = true;

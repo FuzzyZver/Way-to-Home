@@ -41,20 +41,18 @@ public class WorldExecutor: Injects, IEcsRunSystem
                 };
                 break;
             case CommandType.LightOff:
-
-                //int probability = Random.Range(0, SceneData.Lights.Count);
-                //var entity = EcsWorld.NewEntity();
-                //var gameObject = SceneData.Lights[probability].gameObject;
-                //gameObject.SetActive( false );
-                //entity.Get<ActivatesFlag>() = new ActivatesFlag
-                //{
-                //    Duration = command.Cooldown,
-                //    GameObject = gameObject
-                //};
+                EcsWorld.NewEntity().Get<LightOffEvent>() = new LightOffEvent
+                {
+                    Duration = 10f,
+                    Count = 2
+                };
                 break;
-            //case CommandType.FootstepsBehind:
-            //    //код для команды FootstepsBehind
-            //    break;
+            case CommandType.FootstepsBehind:
+                EcsWorld.NewEntity().Get<FootstepsBehindEvent>() = new FootstepsBehindEvent
+                {
+                    Duration = 10f
+                };
+                break;
             default:
                 EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent
                 {

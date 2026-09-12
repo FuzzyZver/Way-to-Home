@@ -37,22 +37,23 @@ public class EcsInclude : MonoBehaviour
             .Add(new StepSoundSystem())
             .Add(new BlinkingLightSystem())
             .Add(new ObjectActivatesSystem())
+
+            //Narrative Occlusion
+            .Add(new ObserverSystem())
+            .Add(new NarrativeDirectorSystem())
+            .Add(new WorldExecutor())
             //Trackers
+            .Add(new DistanceToPlayerSystem())
             .Add(new LightsTrackerSystem())
             .Add(new LookBackTrackerSystem())
             .Add(new FearFreezeTrackerSystem())
             //Executors
             .Add(new FootstepsBehindExecutorSystem())
             .Add(new LightOffExecutorSystem())
-            .Add(new LightRestoreSystem())
 
 
             .Add(new AudioEffectsSystem())
 
-            //Narrative Occlusion
-            .Add(new ObserverSystem())
-            .Add(new NarrativeDirectorSystem())
-            .Add(new WorldExecutor())
 
 #if DEV_OVERLAY
             .Add(new DirectorOverlayBridgeSystem())
@@ -70,6 +71,8 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<GetEnemyPoolEvent>()
             .OneFrame<AudioEffectEvent>()
             .OneFrame<DebugEvent>()
+            .OneFrame<LightOffEvent>()
+            .OneFrame<FootstepsBehindEvent>()
 
 
             .Inject(_world)

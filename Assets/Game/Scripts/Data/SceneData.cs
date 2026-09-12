@@ -9,4 +9,5 @@ public class SceneData : MonoBehaviour
     public NavMeshSurface NavMeshSurface;
     public InteractionActor[] Interactions;
     public List<Light> Lights;
+    public List<SegmentActor> Segments;
 }

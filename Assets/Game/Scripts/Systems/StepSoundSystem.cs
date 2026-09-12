@@ -30,7 +30,7 @@ public class StepSoundSystem : Injects, IEcsInitSystem, IEcsRunSystem
             {
                 _passedDistance = 0;
 
-                if (Physics.Raycast(transformRef.Transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hit, 1.2f))
+                if (Physics.Raycast(transformRef.Transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hit, 3f))
                 {
                     var mat = hit.collider.sharedMaterial;
                     if (mat != null)

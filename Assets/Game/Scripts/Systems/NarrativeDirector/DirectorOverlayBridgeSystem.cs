@@ -37,9 +37,9 @@ public sealed class DirectorOverlayBridgeSystem: Injects, IEcsRunSystem
             if (now - _toasts[i].Birth >= ToastLife)
                 _toasts.RemoveAt(i);
 
+        _activeCommands.Clear();
         foreach (int i in _commandActiveFlagFilter)
         {
-            _activeCommands.Clear();
             ref var cmd = ref _commandActiveFlagFilter.Get1(i);
             _activeCommands.Add(cmd.Name);
         }

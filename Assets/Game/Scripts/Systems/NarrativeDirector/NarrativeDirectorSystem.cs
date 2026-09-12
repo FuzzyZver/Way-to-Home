@@ -2,7 +2,7 @@ using UnityEngine;
 using Leopotam.Ecs;
 using System.Diagnostics;
 
-public class NarrativeDirectorSystem: Injects, IEcsInitSystem, IEcsRunSystem
+public class NarrativeDirectorSystem : Injects, IEcsInitSystem, IEcsRunSystem
 {
     private EcsFilter<PlayerModel> _playerModelFilter;
     private EcsFilter<Command, CommandReadyFlag> _commandsReadyFilter;
@@ -16,6 +16,7 @@ public class NarrativeDirectorSystem: Injects, IEcsInitSystem, IEcsRunSystem
         _narrativeConfig = GameConfig.NarrativeConfig;
         _updateInterval = _narrativeConfig.NarrativeUpdateInterval;
         _freshes = _narrativeConfig.FreshesCommand;
+
         for (int id = 0; id < _narrativeConfig.Commands.Count; id++)
         {
             EcsEntity entity = EcsWorld.NewEntity();
@@ -28,6 +29,7 @@ public class NarrativeDirectorSystem: Injects, IEcsInitSystem, IEcsRunSystem
                 LastTimeUsed = _narrativeConfig.Commands[id].LastTimeUsed,
                 Credibility = _narrativeConfig.Commands[id].Credibility,
                 ThemeFits = _narrativeConfig.Commands[id].ThemeFits,
+                Considerations = _narrativeConfig.Commands[id].Considerations,
             };
             entity.Get<CommandReadyFlag>();
         }
@@ -35,15 +37,17 @@ public class NarrativeDirectorSystem: Injects, IEcsInitSystem, IEcsRunSystem
 
     public void Run()
     {
-        if (Time.time-_lastUpdateTime < _updateInterval) return;
+        if (Time.time - _lastUpdateTime < _updateInterval) return;
         _lastUpdateTime = Time.time;
 
-        foreach(int i in _playerModelFilter)
+        foreach (int i in _playerModelFilter)
         {
             ref var playerModel = ref _playerModelFilter.Get1(i);
+
             ThemeId currentTheme = GetCurrentTheme(in playerModel);
-            var currentCommand = CommandGamble(currentTheme);
+            var currentCommand = CommandGamble(in playerModel, currentTheme);
             if (currentCommand == EcsEntity.Null) continue;
+
             currentCommand.Get<CommandOnBoardFlag>();
             currentCommand.Get<Command>().LastTimeUsed = Time.time;
             currentCommand.Del<CommandReadyFlag>();
@@ -55,51 +59,70 @@ public class NarrativeDirectorSystem: Injects, IEcsInitSystem, IEcsRunSystem
         float best = -1f;
         ThemeId bestTheme = ThemeId.None;
 
-        foreach(var theme in _narrativeConfig.Themes)
+        foreach (var theme in _narrativeConfig.Themes)
         {
-            float score = 1f;
-            foreach(var consideration in theme.Consideration)
-            {
-                float param = ReadParam(in playerModel, consideration.ParamType);
-                score *= consideration.ParamCurve.Evaluate(param);
-            }
+            float score = EvaluateConsiderations(in playerModel, theme.Consideration);
             if (score > best)
             {
                 best = score;
                 bestTheme = theme.ThemeId;
             }
         }
-        GetCurrentThemeScore(bestTheme);
+
+        ReportTheme(bestTheme, best);
         return bestTheme;
     }
 
-    private EcsEntity CommandGamble(ThemeId currentTheme)
+    private EcsEntity CommandGamble(in PlayerModel playerModel, ThemeId currentTheme)
     {
         float bestScore = -1f;
         var bestCommandEntity = EcsEntity.Null;
+
         foreach (int i in _commandsReadyFilter)
         {
             ref var commandComp = ref _commandsReadyFilter.Get1(i);
 
             float themeFit = 0.1f;
-            foreach(var commandFit in commandComp.ThemeFits)
+            foreach (var commandFit in commandComp.ThemeFits)
             {
-                if(commandFit.ThemeId == currentTheme)
+                if (commandFit.ThemeId == currentTheme)
                 {
                     themeFit = commandFit.Fit;
                     break;
                 }
             }
+
             float fresh = Mathf.Clamp01((Time.time - commandComp.LastTimeUsed) / _freshes);
-            float score = commandComp.Credibility * themeFit * fresh;
+
+            // Насколько команда уместна именно под текущее поведение игрока.
+            float relevance = EvaluateConsiderations(in playerModel, commandComp.Considerations);
+
+            float score = commandComp.Credibility * themeFit * fresh * relevance;
             commandComp.CurrentScore = Mathf.Clamp01(score);
+
             if (score > bestScore)
             {
-               bestScore = score;
-               bestCommandEntity = _commandsReadyFilter.GetEntity(i);
+                bestScore = score;
+                bestCommandEntity = _commandsReadyFilter.GetEntity(i);
             }
         }
+
+        ReportCommandChoice(bestCommandEntity, bestScore);
         return bestCommandEntity;
+    }
+
+    private float EvaluateConsiderations(in PlayerModel playerModel, Consideration[] considerations)
+    {
+        if (considerations == null || considerations.Length == 0) return 1f;
+
+        float score = 1f;
+        for (int i = 0; i < considerations.Length; i++)
+        {
+            float param = ReadParam(in playerModel, considerations[i].ParamType);
+            score *= considerations[i].ParamCurve.Evaluate(param);
+        }
+
+        return score;
     }
 
     private float ReadParam(in PlayerModel playerModel, ParamType paramType)
@@ -108,17 +131,43 @@ public class NarrativeDirectorSystem: Injects, IEcsInitSystem, IEcsRunSystem
         {
             case ParamType.Composure:
                 return playerModel.Composure;
+            case ParamType.LightPreference:
+                return playerModel.LightPreference;
+            case ParamType.LookBackFrequency:
+                return playerModel.LookBackFrequency;
+            case ParamType.FearFreeze:
+                return playerModel.FearFreeze;
             default:
                 return 0f;
         }
     }
 
     [Conditional("DEV_OVERLAY")]
-    private void GetCurrentThemeScore(ThemeId currentTheme)
+    private void ReportTheme(ThemeId currentTheme, float score)
     {
         EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent
         {
-            Message = $"Current theme {currentTheme}",
+            Message = $"[DIRECTOR] Theme: {currentTheme} ({score:0.000})",
+            Type = DebugType.Info
+        };
+    }
+
+    [Conditional("DEV_OVERLAY")]
+    private void ReportCommandChoice(EcsEntity commandEntity, float score)
+    {
+        if (commandEntity == EcsEntity.Null)
+        {
+            EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent
+            {
+                Message = "[DIRECTOR] No command available",
+                Type = DebugType.Warning
+            };
+            return;
+        }
+
+        EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent
+        {
+            Message = $"[DIRECTOR] Command: {commandEntity.Get<Command>().Name} ({score:0.000})",
             Type = DebugType.Info
         };
     }

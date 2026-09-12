@@ -17,8 +17,7 @@ public class PlayerActor: Actor
         entity.Get<CameraTargetRef>().Transform = _cameraTargetTransform;
         entity.Get<LightRef>().Light = _flashlightLight;
         entity.Get<PlayerLightMetrics>();
-        entity.Get<PlayerLookBackMetrics>();
-        entity.Get<FearFreezeMetrics>();
-        entity.Get<FootstepsBehindFlag>();
+        entity.Get<PlayerLookBackMetrics>().Frequency = 1f;
+        entity.Get<FearFreezeMetrics>().FearFreeze = 1f;
     }
 }

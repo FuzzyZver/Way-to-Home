@@ -15,4 +15,4 @@ public class Consideration
 }
 
 public enum ThemeId { None, Tension }
-public enum ParamType { Composure }
+public enum ParamType { Composure, LightPreference, LookBackFrequency, FearFreeze }

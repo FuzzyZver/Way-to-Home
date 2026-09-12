@@ -8,6 +8,8 @@ public class PlayerMetricsConfig : ScriptableObject
     public float LightThreshold;
     public float LightIntensityNormality;
     public float SpotAngleMultiplier;
+    public float LightPreferenceWindow;
+    public LayerMask LightOcclusionMask;
 
     [Header("Look back traching props")]
     public float RotationFrequencyWindow;

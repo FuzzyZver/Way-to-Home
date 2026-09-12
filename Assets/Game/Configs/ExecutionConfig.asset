@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7167e5a454508184daf712c998b5db93, type: 3}
   m_Name: ExecutionConfig
   m_EditorClassIdentifier: Assembly-CSharp::ExecutionConfig
-  StepsOffset: 5
+  LightOffDuration: 10
+  MaxLightsPerCommand: 5
+  StepsOffset: 3
   SpeedMultiplier: 0.8
   RotationAngleThreshold: 5
   StepRotationTimeThreshold: 0.5

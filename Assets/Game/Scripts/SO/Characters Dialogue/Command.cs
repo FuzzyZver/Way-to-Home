@@ -10,6 +10,7 @@ public struct Command
     public float LastTimeUsed;
     public float Credibility;
     public ThemeFit[] ThemeFits;
+    public Consideration[] Considerations;
 }
 
 [System.Serializable]
@@ -22,7 +23,8 @@ public struct ThemeFit
 public enum CommandType
 {
     None,
-    LightOff
+    LightOff,
+    FootstepsBehind
     //....
     //type100n
 }

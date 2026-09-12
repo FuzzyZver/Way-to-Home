@@ -1,11 +1,11 @@
 using UnityEngine;
 using Leopotam.Ecs;
 
-public class ObserverSystem: Injects, IEcsInitSystem, IEcsRunSystem
+public class ObserverSystem : Injects, IEcsInitSystem, IEcsRunSystem
 {
     private PlayerActor _player;
     private EcsEntity _observer;
-    
+
     public void Init()
     {
         _player = SceneData.Player;
@@ -20,11 +20,17 @@ public class ObserverSystem: Injects, IEcsInitSystem, IEcsRunSystem
         ref var lookBackMetricsComp = ref playerEntity.Get<PlayerLookBackMetrics>();
         ref var freezeMetric = ref playerEntity.Get<FearFreezeMetrics>();
 
-        _observer.Get<PlayerModel>().Composure = Mathf.Clamp01(
-            lightMetricComp.LightPreferencesRatio*
-            lookBackMetricsComp.Frequency*
-            freezeMetric.FearFreeze
+        ref var playerModel = ref _observer.Get<PlayerModel>();
+
+        playerModel.LightPreference = lightMetricComp.LightPreferencesRatio;
+        playerModel.LookBackFrequency = lookBackMetricsComp.Frequency;
+        playerModel.FearFreeze = freezeMetric.FearFreeze;
+
+        playerModel.Composure = Mathf.Clamp01(
+            playerModel.LightPreference *
+            playerModel.LookBackFrequency *
+            playerModel.FearFreeze
             );
-        //позже будут добавлятьсяи прочие метрики, влияющие на страх через сложение (lightMetricComp.LightPreferencesRatio+...)
+        //позже будут добавляться и прочие метрики, влияющие на страх через сложение
     }
 }
