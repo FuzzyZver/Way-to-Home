@@ -53,6 +53,13 @@ public class WorldExecutor: Injects, IEcsRunSystem
                     Duration = 10f
                 };
                 break;
+            case CommandType.StalkerGlimpse:
+                EcsWorld.NewEntity().Get<StalkerGlimpseEvent>() = new StalkerGlimpseEvent
+                {
+                    Duration = 0f,
+                    SlotCount = 4
+                };
+                break;
             default:
                 EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent
                 {

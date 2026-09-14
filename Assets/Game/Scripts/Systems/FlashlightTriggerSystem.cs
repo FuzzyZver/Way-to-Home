@@ -1,7 +1,7 @@
 using Leopotam.Ecs;
 using UnityEngine;
 
-public class EnemyFlashlightTrigger: Injects, IEcsInitSystem, IEcsRunSystem
+public class FlashlightTriggerSystem: Injects, IEcsInitSystem, IEcsRunSystem
 {
     private EcsFilter<FlashLightRaycastEvent> _flashlightRaycastEventFilter;
     private PlayerActor _playerRef;

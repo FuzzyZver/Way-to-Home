@@ -16,6 +16,10 @@ MonoBehaviour:
   LightThreshold: 0.2
   LightIntensityNormality: 3
   SpotAngleMultiplier: 0.5
+  LightPreferenceWindow: 0
+  LightOcclusionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   RotationFrequencyWindow: 60
   RotationAngleThreshold: 120
   RotationTimeThreshold: 0.3
@@ -24,3 +28,10 @@ MonoBehaviour:
   FreezeDistanceThreshold: 1
   FreezeTimeTrheshold: 2
   FearFreezeThreshold: 0.01
+  RadialScanInterval: 0.1
+  RadialScanAngleStep: 5
+  RadialScanMaxDistance: 100
+  EyeHeight: 1.7
+  RadialScanMask:
+    serializedVersion: 2
+    m_Bits: 4294967295

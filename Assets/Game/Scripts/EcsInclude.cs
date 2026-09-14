@@ -27,7 +27,7 @@ public class EcsInclude : MonoBehaviour
             .Add(new FlashlightSystem())
             .Add(new FlashLightraycastSystem())
             .Add(new EnemyFolowSystem())
-            .Add(new EnemyFlashlightTrigger())
+            .Add(new FlashlightTriggerSystem())
             .Add(new EnemyFindHidePointSystem())
             .Add(new TextDialogSystem())
             .Add(new FadeSystem())
@@ -44,12 +44,14 @@ public class EcsInclude : MonoBehaviour
             .Add(new WorldExecutor())
             //Trackers
             .Add(new DistanceToPlayerSystem())
+            .Add(new RadialScanSystem())
             .Add(new LightsTrackerSystem())
             .Add(new LookBackTrackerSystem())
             .Add(new FearFreezeTrackerSystem())
             //Executors
             .Add(new FootstepsBehindExecutorSystem())
             .Add(new LightOffExecutorSystem())
+            .Add(new StalkerGlimpseExecutorSystem())
 
 
             .Add(new AudioEffectsSystem())
@@ -73,6 +75,8 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<DebugEvent>()
             .OneFrame<LightOffEvent>()
             .OneFrame<FootstepsBehindEvent>()
+            .OneFrame<RadialScanEvent>()
+            .OneFrame<StalkerGlimpseEvent>()
 
 
             .Inject(_world)

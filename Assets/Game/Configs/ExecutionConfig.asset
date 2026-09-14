@@ -18,3 +18,15 @@ MonoBehaviour:
   SpeedMultiplier: 0.8
   RotationAngleThreshold: 5
   StepRotationTimeThreshold: 0.5
+  FootstepsBehindDuration: 0
+  ShadowActor: {fileID: 535099159527164518, guid: 3266e9449b165f54284979eb36a875bd, type: 3}
+  StalkerGlimpseDuration: 10
+  StalkerGlimpseSlots: 5
+  ShadowMinSpawnDistance: 30
+  ShadowMaxSpawnDistance: 100
+  ShadowSpawnHiddenCone: 140
+  ShadowGazeCone: 35
+  ShadowGazeDwellTime: 0.15
+  ShadowVanishSpeedOnGaze: 6
+  ShadowVanishSpeedOnTimeout: 1
+  ShadowChestHeight: 1.2

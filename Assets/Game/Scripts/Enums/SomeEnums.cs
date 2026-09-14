@@ -9,6 +9,7 @@ public enum SegmentRelativePosition
 public enum SegmentObjectsType
 {
     Light,
+    ShadowSpawnPoint,
     Interactable,
     Other,
     None

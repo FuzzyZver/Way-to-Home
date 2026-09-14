@@ -24,7 +24,8 @@ public enum CommandType
 {
     None,
     LightOff,
-    FootstepsBehind
+    FootstepsBehind,
+    StalkerGlimpse
     //....
     //type100n
 }

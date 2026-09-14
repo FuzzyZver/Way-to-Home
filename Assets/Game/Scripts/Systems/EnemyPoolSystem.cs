@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class EnemyPoolSystem: Injects, IEcsInitSystem, IEcsRunSystem
 {
     private EcsFilter<GetEnemyPoolEvent> _getEnemyPoolEventFilter;
-    private EcsFilter<DespawnFlag> _despawnFlagFilter;
+    private EcsFilter<DespawnFlag, EnemyActorRef> _despawnFlagFilter;
     public ObjectPool<EnemyActor> _enemyActorPool;
     public EnemiesConfig _enemyConfig;
 
@@ -35,7 +35,8 @@ public class EnemyPoolSystem: Injects, IEcsInitSystem, IEcsRunSystem
         foreach(int i in _despawnFlagFilter)
         {
             var enemyEntity = _despawnFlagFilter.GetEntity(i);
-            Release(enemyEntity.Get<EnemyActorRef>().EnemyActor);
+            enemyEntity.Del<DespawnFlag>();
+            Release(_despawnFlagFilter.Get2(i).EnemyActor);
         }
     }
 

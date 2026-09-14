@@ -22,4 +22,11 @@ public class PlayerMetricsConfig : ScriptableObject
     public float FreezeDistanceThreshold;
     public float FreezeTimeTrheshold;
     public float FearFreezeThreshold;
+
+    [Header("Radial scan props")]
+    public float RadialScanInterval;     // ~0.1
+    public float RadialScanAngleStep;    // ~5
+    public float RadialScanMaxDistance;  // ~40
+    public float EyeHeight;              // ~1.7
+    public LayerMask RadialScanMask;
 }
