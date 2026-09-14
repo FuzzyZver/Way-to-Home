@@ -60,6 +60,12 @@ public class WorldExecutor: Injects, IEcsRunSystem
                     SlotCount = 4
                 };
                 break;
+            case CommandType.MakeLightHostile:
+                EcsWorld.NewEntity().Get<MakeLightHostileEvent>() = new MakeLightHostileEvent
+                {
+                    Duration = 10f
+                };
+                break;
             default:
                 EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent
                 {

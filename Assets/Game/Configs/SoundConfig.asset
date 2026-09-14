@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: SoundConfig
   m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
   Volume: 1
-  MusicVolume: 0
-  SFXVolume: 0
+  MusicVolume: 1
+  SFXVolume: 1
   CreepySounds: []
+  LightHumSounds:
+  - {fileID: 8300000, guid: 00059bbb916e3af4c922db40064689b1, type: 3}
+  - {fileID: 8300000, guid: f9490af1b2f399d4caa15ce9e6a6a5cf, type: 3}
+  - {fileID: 8300000, guid: 71b5085831e95094eaf9c59329c8f96a, type: 3}
+  - {fileID: 8300000, guid: 51e2d15596a008340ac51902d6c496fe, type: 3}

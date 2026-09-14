@@ -20,13 +20,28 @@ MonoBehaviour:
   StepRotationTimeThreshold: 0.5
   FootstepsBehindDuration: 0
   ShadowActor: {fileID: 535099159527164518, guid: 3266e9449b165f54284979eb36a875bd, type: 3}
-  StalkerGlimpseDuration: 10
-  StalkerGlimpseSlots: 5
-  ShadowMinSpawnDistance: 30
-  ShadowMaxSpawnDistance: 100
+  StalkerGlimpseDuration: 60
+  StalkerGlimpseSlots: 4
+  ShadowMinSpawnDistance: 10
+  ShadowMaxSpawnDistance: 50
   ShadowSpawnHiddenCone: 140
   ShadowGazeCone: 35
   ShadowGazeDwellTime: 0.15
   ShadowVanishSpeedOnGaze: 6
   ShadowVanishSpeedOnTimeout: 1
   ShadowChestHeight: 1.2
+  BlinkCalmMin: 1.5
+  BlinkCalmMax: 4
+  BlinkBurstMin: 0.2
+  BlinkBurstMax: 0.8
+  BlinkToggleMin: 0.02
+  BlinkToggleMax: 0.12
+  BlinkCalmJitter: 0.12
+  BlinkCalmNoiseSpeed: 2
+  BlinkBurstPeak: 1.3
+  BlinkBurstFloor: 0
+  ShadowCasterPrefab: {fileID: 2322115885639973927, guid: ab5b0b3bc079e014eae585d9181d23cc, type: 3}
+  MakeLightHostileDuration: 5
+  HostileShadowLateralOffset: 1.5
+  HostileShadowCasterPlacement: 0.6
+  HostileHumVolume: 0.8

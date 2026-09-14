@@ -52,6 +52,7 @@ public class EcsInclude : MonoBehaviour
             .Add(new FootstepsBehindExecutorSystem())
             .Add(new LightOffExecutorSystem())
             .Add(new StalkerGlimpseExecutorSystem())
+            .Add(new MakeLightHostileExecutorSystem())
 
 
             .Add(new AudioEffectsSystem())
@@ -77,6 +78,7 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<FootstepsBehindEvent>()
             .OneFrame<RadialScanEvent>()
             .OneFrame<StalkerGlimpseEvent>()
+            .OneFrame<MakeLightHostileEvent>()
 
 
             .Inject(_world)
