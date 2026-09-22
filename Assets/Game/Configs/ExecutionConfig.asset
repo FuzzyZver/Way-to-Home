@@ -45,3 +45,13 @@ MonoBehaviour:
   HostileShadowLateralOffset: 1.5
   HostileShadowCasterPlacement: 0.6
   HostileHumVolume: 0.8
+  DrainFlashlightDuration: 4
+  DrainArmTimeout: 50
+  DrainSoleLightDelay: 1.5
+  DrainBlackoutChance: 0.4
+  DrainTransitionDuration: 0.5
+  DrainToggleMin: 0.03
+  DrainToggleMax: 0.18
+  DrainSputterLowMin: 0
+  DrainSputterLowMax: 0.35
+  DrainSputterHighMin: 0.6

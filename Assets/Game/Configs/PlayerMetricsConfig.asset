@@ -37,9 +37,9 @@ MonoBehaviour:
     m_Bits: 4294967295
   FlashlightSampleInterval: 0.2
   FlashlightDependenceWindow: 60
-  SweepMinAmplitude: 15
-  SweepMaxAmplitude: 110
-  SweepMinSpeed: 120
+  SweepMinAmplitude: 30
+  SweepMaxAmplitude: 70
+  SweepMinSpeed: 60
   SweepIdleSpeed: 20
   SweepStrokeBreak: 0.15
   SweepRateForMax: 20

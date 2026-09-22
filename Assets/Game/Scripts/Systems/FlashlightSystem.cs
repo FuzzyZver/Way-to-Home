@@ -38,11 +38,14 @@ public class FlashlightSystem: Injects, IEcsInitSystem, IEcsRunSystem
             float flashlightZoom = eventComp.Value * _playerConfig.ScrollSpeed;
             _flashlight.range = Mathf.Clamp(_flashlight.range + flashlightZoom, _playerConfig.FlashlightMinRange, _playerConfig.FlashlightMaxRange);
 
-            _flashlight.spotAngle = _playerConfig.SpotAngel * 3/ _flashlight.range;
+            _flashlight.spotAngle = _playerConfig.SpotAngel * 3 / _flashlight.range;
             _flashlight.innerSpotAngle = _playerConfig.SpotAngel * 2 / _flashlight.range;
-
-            _flashlight.intensity = _playerConfig.Intensity * _flashlight.range;
         }
+
+        float intensityMultiplier = playerEntity.Has<FlashlightModifierComponent>()
+        ? playerEntity.Get<FlashlightModifierComponent>().IntensityMultiplier
+        : 1f;
+        _flashlight.intensity = _playerConfig.Intensity * _flashlight.range * intensityMultiplier;
 
         foreach (int i in _flashlightInputEventFilter)
         {

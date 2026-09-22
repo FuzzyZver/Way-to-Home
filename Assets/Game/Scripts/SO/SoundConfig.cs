@@ -9,4 +9,5 @@ public class SoundConfig : ScriptableObject
     [Range(0f, 1f)] public float SFXVolume;
     public List<AudioClip> CreepySounds;
     public List<AudioClip> LightHumSounds;
+    public List<AudioClip> FlashlightFailSounds;
 }

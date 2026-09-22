@@ -14,3 +14,11 @@ public enum SegmentObjectsType
     Other,
     None
 }
+
+public enum DrainPhase
+{
+    Armed, 
+    Sputter, 
+    Blackout, 
+    Recover
+}

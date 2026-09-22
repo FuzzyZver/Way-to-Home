@@ -50,18 +50,24 @@ public class WorldExecutor: Injects, IEcsRunSystem
             case CommandType.FootstepsBehind:
                 EcsWorld.NewEntity().Get<FootstepsBehindEvent>() = new FootstepsBehindEvent
                 {
-                    Duration = 10f
+                    Duration = 7f
                 };
                 break;
             case CommandType.StalkerGlimpse:
                 EcsWorld.NewEntity().Get<StalkerGlimpseEvent>() = new StalkerGlimpseEvent
                 {
-                    Duration = 0f,
+                    Duration = 50f,
                     SlotCount = 4
                 };
                 break;
             case CommandType.MakeLightHostile:
                 EcsWorld.NewEntity().Get<MakeLightHostileEvent>() = new MakeLightHostileEvent
+                {
+                    Duration = 10f
+                };
+                break;
+            case CommandType.DrainFlashlight:
+                EcsWorld.NewEntity().Get<DrainFlashlightEvent>() = new DrainFlashlightEvent
                 {
                     Duration = 10f
                 };

@@ -54,6 +54,7 @@ public class EcsInclude : MonoBehaviour
             .Add(new LightOffExecutorSystem())
             .Add(new StalkerGlimpseExecutorSystem())
             .Add(new MakeLightHostileExecutorSystem())
+            .Add(new DrainFlashlightExecutorSystem())
 
 
             .Add(new AudioEffectsSystem())
@@ -81,6 +82,7 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<StalkerGlimpseEvent>()
             .OneFrame<MakeLightHostileEvent>()
             .OneFrame<FlashlightInputEvent>()
+            .OneFrame<DrainFlashlightEvent>()
 
 
             .Inject(_world)
