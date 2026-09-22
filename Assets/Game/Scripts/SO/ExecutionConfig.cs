@@ -57,4 +57,14 @@ public class ExecutionConfig : ScriptableObject
     [Range(0f, 1f)] public float DrainSputterLowMin;   // 0
     [Range(0f, 1f)] public float DrainSputterLowMax;   // 0.35
     [Range(0f, 1f)] public float DrainSputterHighMin;  // 0.6
+
+    [Header("Dead silence settings")]
+    public float DeadSilenceDuration;                       // 6
+    public float DeadSilenceCutDuration;                    // 0.3 
+    public float DeadSilenceRestoreDuration;                // 2.5 
+    [Range(0f, 1f)] public float DeadSilenceFloor;          // 0.04
+    public float DeadSilenceCutoff;                         // 350 Гц
+    [Range(0f, 1f)] public float DeadSilenceStingerVolume;  // 0.35
+    public float DeadSilenceStingerDistance;                // 3
+    public float DeadSilenceStingerTail;                    // 0.8
 }

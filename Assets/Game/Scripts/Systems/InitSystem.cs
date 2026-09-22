@@ -18,6 +18,10 @@ public class InitSystem: Injects, IEcsPreInitSystem
             segment.Init(EcsWorld);
         }
 
+        RealtimeData.MasterVolume = GameConfig.SoundConfig.Volume;
+        RealtimeData.MusicVolume = GameConfig.SoundConfig.MusicVolume;
+        RealtimeData.SfxVolume = GameConfig.SoundConfig.SFXVolume;
+
         //Render fog init
         RenderSettings.fog = true;
         RenderSettings.fogMode = GameConfig.CommonConfig.FogMode;

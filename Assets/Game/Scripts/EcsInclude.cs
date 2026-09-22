@@ -37,6 +37,7 @@ public class EcsInclude : MonoBehaviour
             .Add(new StepSoundSystem())
             .Add(new BlinkingLightSystem())
             .Add(new ObjectActivatesSystem())
+            .Add(new AudioMixSystem())
 
             //Trackers
             .Add(new DistanceToPlayerSystem())
@@ -55,6 +56,7 @@ public class EcsInclude : MonoBehaviour
             .Add(new StalkerGlimpseExecutorSystem())
             .Add(new MakeLightHostileExecutorSystem())
             .Add(new DrainFlashlightExecutorSystem())
+            .Add(new DeadSilenceExecutorSystem())
 
 
             .Add(new AudioEffectsSystem())
@@ -83,6 +85,7 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<MakeLightHostileEvent>()
             .OneFrame<FlashlightInputEvent>()
             .OneFrame<DrainFlashlightEvent>()
+            .OneFrame<DeadSilenceEvent>()
 
 
             .Inject(_world)

@@ -21,3 +21,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f9490af1b2f399d4caa15ce9e6a6a5cf, type: 3}
   - {fileID: 8300000, guid: 71b5085831e95094eaf9c59329c8f96a, type: 3}
   - {fileID: 8300000, guid: 51e2d15596a008340ac51902d6c496fe, type: 3}
+  FlashlightFailSounds:
+  - {fileID: 8300000, guid: 56557705fc49e1c4f82c77cd55182fab, type: 3}
+  - {fileID: 8300000, guid: aa524766b13f32d42bbcb03c834fe52c, type: 3}
+  DeadSilenceSounds:
+  - {fileID: 8300000, guid: 50e2ec394c168724d8a0968cc8c92f18, type: 3}
+  - {fileID: 8300000, guid: 221af7355d74f4c46a6cbdfe9eccd104, type: 3}
+  - {fileID: 8300000, guid: 31ac7fc490602c14f89daba6c334d8b2, type: 3}
+  Mixer: {fileID: 24100000, guid: 68e9b8d21270f4a4281566e9841678fc, type: 2}
+  WorldGroup: {fileID: 2233241051826825923, guid: 68e9b8d21270f4a4281566e9841678fc, type: 2}
+  DirectorGroup: {fileID: 920223933979338775, guid: 68e9b8d21270f4a4281566e9841678fc, type: 2}
+  VoiceCount: 2

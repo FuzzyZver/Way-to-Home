@@ -27,7 +27,8 @@ public enum CommandType
     FootstepsBehind,
     StalkerGlimpse,
     MakeLightHostile,
-    DrainFlashlight
+    DrainFlashlight,
+    DeadSilence
     //....
     //type100n
 }

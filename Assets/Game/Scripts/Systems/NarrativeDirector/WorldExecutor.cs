@@ -72,6 +72,12 @@ public class WorldExecutor: Injects, IEcsRunSystem
                     Duration = 10f
                 };
                 break;
+            case CommandType.DeadSilence:
+                EcsWorld.NewEntity().Get<DeadSilenceEvent>() = new DeadSilenceEvent
+                {
+                    Duration = 5f
+                };
+                break;
             default:
                 EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent
                 {

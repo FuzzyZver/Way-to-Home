@@ -45,6 +45,10 @@ public class FearFreezeTrackerSystem: Injects, IEcsInitSystem, IEcsRunSystem
                 metricsComp.FearFreeze = 1f;
             }
         }
+        else
+        {
+            playerEntity.Get<FearFreezeMetrics>().FearFreeze = 1f;
+        }
     }
 
     private void FreezeTraching(EcsEntity playerEntity)

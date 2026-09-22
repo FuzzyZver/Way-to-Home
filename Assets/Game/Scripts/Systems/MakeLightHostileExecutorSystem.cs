@@ -163,7 +163,8 @@ public class MakeLightHostileExecutorSystem : Injects, IEcsInitSystem, IEcsRunSy
         source.clip = _humClips[Random.Range(0, _humClips.Count)];
         source.loop = true;
         source.spatialBlend = 1f;
-        source.volume = _humVolume * GameConfig.SoundConfig.SFXVolume;
+        source.outputAudioMixerGroup = GameConfig.SoundConfig.WorldGroup;
+        source.volume = _humVolume;
         source.Play();
 
         return source;
