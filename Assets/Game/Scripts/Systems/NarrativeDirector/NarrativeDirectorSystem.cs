@@ -137,6 +137,8 @@ public class NarrativeDirectorSystem : Injects, IEcsInitSystem, IEcsRunSystem
                 return playerModel.LookBackFrequency;
             case ParamType.FearFreeze:
                 return playerModel.FearFreeze;
+            case ParamType.FlashlightDependence:
+                return playerModel.FlashlightDependence;
             default:
                 return 0f;
         }

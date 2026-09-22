@@ -65,6 +65,9 @@ bool _show = false;
             GUILayout.Label("<b>OTHER PLAYER PROPS</b>", _style);
             GUILayout.Space(4);
             GUILayout.Label($"FlashlightCharge: {_playerEntity.Get<FlashlightChargeComponent>().Charge}", _style);
+            var fd = _playerEntity.Get<FlashlightDependenceMetrics>();
+            GUILayout.Label($"FlashlightDependence: {m.FlashlightDependence:0.000}", _style);
+            GUILayout.Label($"  On: {fd.OnRatio:0.00}  Focus: {fd.FocusRatio:0.00}  Sweeps: {fd.SweepsInWindow} ({fd.SweepRate:0.00})", _style);
         }
 
         GUILayout.Space(10);

@@ -16,7 +16,7 @@ MonoBehaviour:
   LightThreshold: 0.2
   LightIntensityNormality: 3
   SpotAngleMultiplier: 0.5
-  LightPreferenceWindow: 0
+  LightPreferenceWindow: 45
   LightOcclusionMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -35,3 +35,14 @@ MonoBehaviour:
   RadialScanMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  FlashlightSampleInterval: 0.2
+  FlashlightDependenceWindow: 60
+  SweepMinAmplitude: 15
+  SweepMaxAmplitude: 110
+  SweepMinSpeed: 120
+  SweepIdleSpeed: 20
+  SweepStrokeBreak: 0.15
+  SweepRateForMax: 20
+  DependenceOnWeight: 0.5
+  DependenceSweepWeight: 0.3
+  DependenceFocusWeight: 0.2

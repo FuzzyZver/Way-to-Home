@@ -38,16 +38,17 @@ public class EcsInclude : MonoBehaviour
             .Add(new BlinkingLightSystem())
             .Add(new ObjectActivatesSystem())
 
-            //Narrative Occlusion
-            .Add(new ObserverSystem())
-            .Add(new NarrativeDirectorSystem())
-            .Add(new WorldExecutor())
             //Trackers
             .Add(new DistanceToPlayerSystem())
             .Add(new RadialScanSystem())
             .Add(new LightsTrackerSystem())
             .Add(new LookBackTrackerSystem())
             .Add(new FearFreezeTrackerSystem())
+            .Add(new FlashlightDependenceTrackerSystem())
+            //Narrative Occlusion
+            .Add(new ObserverSystem())
+            .Add(new NarrativeDirectorSystem())
+            .Add(new WorldExecutor())
             //Executors
             .Add(new FootstepsBehindExecutorSystem())
             .Add(new LightOffExecutorSystem())

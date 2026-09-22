@@ -15,7 +15,7 @@ MonoBehaviour:
   Speed: 10
   Charge: 89
   ChargeLostPer: 0.2
-  DischargeTime: 10
+  DischargeTime: 1
   ScrollSpeed: 3
   FlashlightMaxRange: 50
   FlashlightMinRange: 8

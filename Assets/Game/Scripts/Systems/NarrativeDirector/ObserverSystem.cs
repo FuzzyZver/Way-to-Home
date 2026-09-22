@@ -19,12 +19,14 @@ public class ObserverSystem : Injects, IEcsInitSystem, IEcsRunSystem
         ref var lightMetricComp = ref playerEntity.Get<PlayerLightMetrics>();
         ref var lookBackMetricsComp = ref playerEntity.Get<PlayerLookBackMetrics>();
         ref var freezeMetric = ref playerEntity.Get<FearFreezeMetrics>();
+        ref var flashlightMetric = ref playerEntity.Get<FlashlightDependenceMetrics>();
 
         ref var playerModel = ref _observer.Get<PlayerModel>();
 
         playerModel.LightPreference = lightMetricComp.LightPreferencesRatio;
         playerModel.LookBackFrequency = lookBackMetricsComp.Frequency;
         playerModel.FearFreeze = freezeMetric.FearFreeze;
+        playerModel.FlashlightDependence = flashlightMetric.Dependence;
 
         playerModel.Composure = Mathf.Clamp01(
             playerModel.LightPreference *
