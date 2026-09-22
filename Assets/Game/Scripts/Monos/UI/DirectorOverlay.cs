@@ -61,6 +61,10 @@ bool _show = false;
             GUILayout.Label("<b>PLAYER MODEL</b>", _style);
             GUILayout.Space(4);
             GUILayout.Label($"Composure: {m.Composure}", _style);
+            GUILayout.Space(10);
+            GUILayout.Label("<b>OTHER PLAYER PROPS</b>", _style);
+            GUILayout.Space(4);
+            GUILayout.Label($"FlashlightCharge: {_playerEntity.Get<FlashlightChargeComponent>().Charge}", _style);
         }
 
         GUILayout.Space(10);

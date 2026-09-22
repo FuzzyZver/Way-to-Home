@@ -79,6 +79,7 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<RadialScanEvent>()
             .OneFrame<StalkerGlimpseEvent>()
             .OneFrame<MakeLightHostileEvent>()
+            .OneFrame<FlashlightInputEvent>()
 
 
             .Inject(_world)

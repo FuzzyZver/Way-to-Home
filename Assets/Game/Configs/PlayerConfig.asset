@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: Assembly-CSharp::PlayerConfig
   Speed: 10
+  Charge: 89
+  ChargeLostPer: 0.2
+  DischargeTime: 10
   ScrollSpeed: 3
   FlashlightMaxRange: 50
   FlashlightMinRange: 8

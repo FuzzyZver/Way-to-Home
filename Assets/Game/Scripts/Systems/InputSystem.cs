@@ -11,6 +11,7 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
     private InputAction _lookInputAction;
     private InputAction _scrollInputAction;
     private InputAction _continueInputAction;
+    private InputAction _flashlightInputAction;
 
     public void Init()
     {
@@ -42,6 +43,14 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
             Debug.LogError($"[INPUT SYSTEM] Key tag |{lookKeyTag}| for look is not recognized!" +
                            "Please check Input Config or Input System Settings!");
 
+        string flashlightKeyTag = GameConfig.InputConfig.FlashlightKeyTag;
+        _flashlightInputAction = Input.actions.FindAction(flashlightKeyTag);
+        if (_flashlightInputAction != null)
+           _flashlightInputAction.performed += OnFlashlightInput;
+        else
+            Debug.LogError($"[INPUT SYSTEM] Key tag |{flashlightKeyTag}| for flashlight is not recognized!" +
+                           "Please check Input Config or Input System Settings!");
+
         string scrollKeyTag = GameConfig.InputConfig.ScrollKeyTag;
         _scrollInputAction = Input.actions.FindAction(scrollKeyTag);
         if (_scrollInputAction != null)
@@ -64,6 +73,7 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
         _lookInputAction.Enable();
         _scrollInputAction.Enable();
         _continueInputAction.Enable();
+        _flashlightInputAction.Enable();
     }
 
     private void OnJunpKeyPress(InputAction.CallbackContext callbackContext)
@@ -83,6 +93,11 @@ public class InputSystem : Injects, IEcsInitSystem, IEcsRunSystem
     private void OnScrollInput(InputAction.CallbackContext callbackContext)
     {
         EcsWorld.NewEntity().Get<ScrollInputEvent>().Value = callbackContext.ReadValue<float>();
+    }
+
+    private void OnFlashlightInput(InputAction.CallbackContext callbackContext)
+    {
+        EcsWorld.NewEntity().Get<FlashlightInputEvent>();
     }
 
     public void Run()

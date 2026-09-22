@@ -4,17 +4,23 @@ using UnityEngine;
 public class FlashlightSystem: Injects, IEcsInitSystem, IEcsRunSystem
 {
     private EcsFilter<ScrollInputEvent> _scrollInputEventFilter;
+    private EcsFilter<FlashlightInputEvent> _flashlightInputEventFilter;
     private PlayerConfig _playerConfig;
     private PlayerActor _playerRef;
     private Light _flashlight;
-    
-
+    private float _chargeLostPer;
+    private float _chargeTimer;
+    private float _dischargeTime;
 
     public void Init()
     {
         _playerRef = SceneData.Player;
         _flashlight = _playerRef.GetEntity().Get<LightRef>().Light;
         _playerConfig = GameConfig.PlayerConfig;
+
+        _playerRef.GetEntity().Get<FlashlightChargeComponent>().Charge = _playerConfig.Charge;
+        _chargeLostPer = _playerConfig.ChargeLostPer;
+        _dischargeTime = _playerConfig.DischargeTime;
     }
 
     public void Run()
@@ -38,5 +44,29 @@ public class FlashlightSystem: Injects, IEcsInitSystem, IEcsRunSystem
             _flashlight.intensity = _playerConfig.Intensity * _flashlight.range;
         }
 
+        foreach (int i in _flashlightInputEventFilter)
+        {
+            if (!playerEntity.Has<FlashlightDischargedFlag>())
+            {
+                _flashlight.enabled = !_flashlight.enabled;
+            }
+        }
+
+        if (_flashlight.enabled && !playerEntity.Has<FlashlightDischargedFlag>())
+        {
+            _chargeTimer += Time.deltaTime;
+
+            if (_chargeTimer >= _dischargeTime)
+            {
+                _chargeTimer -= _dischargeTime;
+                playerEntity.Get<FlashlightChargeComponent>().Charge -= _chargeLostPer;
+                if(playerEntity.Get<FlashlightChargeComponent>().Charge <= 0)
+                {
+                    playerEntity.Get<FlashlightChargeComponent>().Charge = 0;
+                    playerEntity.Get<FlashlightDischargedFlag>();
+                    _flashlight.enabled = false;
+                }
+            }
+        }
     }
 }
