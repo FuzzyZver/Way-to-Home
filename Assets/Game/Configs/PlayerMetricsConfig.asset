@@ -46,3 +46,8 @@ MonoBehaviour:
   DependenceOnWeight: 0.5
   DependenceSweepWeight: 0.3
   DependenceFocusWeight: 0.2
+  FamiliarityVisitsForFull: 5
+  FamiliarityDwellForFull: 90
+  FamiliarityVisitWeight: 0.6
+  FamiliarityDwellWeight: 0.4
+  SegmentEnterDebounce: 0.75

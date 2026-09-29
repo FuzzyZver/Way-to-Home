@@ -67,4 +67,11 @@ public class ExecutionConfig : ScriptableObject
     [Range(0f, 1f)] public float DeadSilenceStingerVolume;  // 0.35
     public float DeadSilenceStingerDistance;                // 3
     public float DeadSilenceStingerTail;                    // 0.8
+
+    [Header("Familiar made wrong settings")]
+    [Range(0f, 1f)] public float WrongMinFamiliarity;   // 0.5
+    public float WrongRevertDelay;                      // 0 = навсегда
+    public float WrongHiddenCone;                       // 140
+    public float WrongDetailHeight;                     // 1.2
+    public int WrongFallbackDepth;
 }

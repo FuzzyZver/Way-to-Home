@@ -63,3 +63,8 @@ MonoBehaviour:
   DeadSilenceStingerVolume: 0.35
   DeadSilenceStingerDistance: 3
   DeadSilenceStingerTail: 0.8
+  WrongMinFamiliarity: 0.5
+  WrongRevertDelay: 100
+  WrongHiddenCone: 140
+  WrongDetailHeight: 1
+  WrongFallbackDepth: 5

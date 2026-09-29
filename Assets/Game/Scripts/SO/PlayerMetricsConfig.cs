@@ -42,4 +42,11 @@ public class PlayerMetricsConfig : ScriptableObject
     [Range(0f, 1f)] public float DependenceOnWeight;     // 0.5
     [Range(0f, 1f)] public float DependenceSweepWeight;  // 0.3
     [Range(0f, 1f)] public float DependenceFocusWeight;  // 0.2
+
+    [Header("Segment familiarity props")]
+    public int FamiliarityVisitsForFull;                    // 5
+    public float FamiliarityDwellForFull;                   // 90
+    [Range(0f, 1f)] public float FamiliarityVisitWeight;    // 0.6
+    [Range(0f, 1f)] public float FamiliarityDwellWeight;    // 0.4
+    public float SegmentEnterDebounce;                      // 0.75
 }

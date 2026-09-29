@@ -40,7 +40,9 @@ public class EcsInclude : MonoBehaviour
             .Add(new AudioMixSystem())
 
             //Trackers
+            .Add(new SegmentOccupancySystem())
             .Add(new DistanceToPlayerSystem())
+            .Add(new SegmentFamiliaritySystem())
             .Add(new RadialScanSystem())
             .Add(new LightsTrackerSystem())
             .Add(new LookBackTrackerSystem())
@@ -57,6 +59,7 @@ public class EcsInclude : MonoBehaviour
             .Add(new MakeLightHostileExecutorSystem())
             .Add(new DrainFlashlightExecutorSystem())
             .Add(new DeadSilenceExecutorSystem())
+            .Add(new FamiliarMadeWrongExecutorSystem())
 
 
             .Add(new AudioEffectsSystem())
@@ -86,6 +89,8 @@ public class EcsInclude : MonoBehaviour
             .OneFrame<FlashlightInputEvent>()
             .OneFrame<DrainFlashlightEvent>()
             .OneFrame<DeadSilenceEvent>()
+            .OneFrame<FamiliarMadeWrongEvent>()
+            .OneFrame<SegmentTriggerEvent>()
 
 
             .Inject(_world)

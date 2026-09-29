@@ -12,7 +12,8 @@ public enum SegmentObjectsType
     ShadowSpawnPoint,
     Interactable,
     Other,
-    None
+    None,
+    WrongDetail
 }
 
 public enum DrainPhase

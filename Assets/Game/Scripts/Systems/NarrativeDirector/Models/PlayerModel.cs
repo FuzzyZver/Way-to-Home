@@ -8,4 +8,5 @@ public struct PlayerModel
     public float LookBackFrequency;
     public float FearFreeze;
     public float FlashlightDependence;
+    public float SegmentFamiliarity;
 }

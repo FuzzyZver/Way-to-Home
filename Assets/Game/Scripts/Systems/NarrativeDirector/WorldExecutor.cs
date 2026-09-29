@@ -78,6 +78,12 @@ public class WorldExecutor: Injects, IEcsRunSystem
                     Duration = 5f
                 };
                 break;
+            case CommandType.FamiliarMadeWrong:
+                EcsWorld.NewEntity().Get<FamiliarMadeWrongEvent>() = new FamiliarMadeWrongEvent
+                {
+                    MinFamiliarity = 0.5f
+                };
+                break;
             default:
                 EcsWorld.NewEntity().Get<DebugEvent>() = new DebugEvent
                 {

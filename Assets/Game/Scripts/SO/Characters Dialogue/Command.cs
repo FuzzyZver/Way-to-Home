@@ -28,7 +28,8 @@ public enum CommandType
     StalkerGlimpse,
     MakeLightHostile,
     DrainFlashlight,
-    DeadSilence
+    DeadSilence,
+    FamiliarMadeWrong
     //....
     //type100n
 }

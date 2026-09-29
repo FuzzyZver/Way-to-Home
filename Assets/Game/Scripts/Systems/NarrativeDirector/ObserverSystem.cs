@@ -20,6 +20,7 @@ public class ObserverSystem : Injects, IEcsInitSystem, IEcsRunSystem
         ref var lookBackMetricsComp = ref playerEntity.Get<PlayerLookBackMetrics>();
         ref var freezeMetric = ref playerEntity.Get<FearFreezeMetrics>();
         ref var flashlightMetric = ref playerEntity.Get<FlashlightDependenceMetrics>();
+        ref var familiarityMetric = ref playerEntity.Get<SegmentFamiliarityMetrics>();
 
         ref var playerModel = ref _observer.Get<PlayerModel>();
 
@@ -27,6 +28,7 @@ public class ObserverSystem : Injects, IEcsInitSystem, IEcsRunSystem
         playerModel.LookBackFrequency = lookBackMetricsComp.Frequency;
         playerModel.FearFreeze = freezeMetric.FearFreeze;
         playerModel.FlashlightDependence = flashlightMetric.Dependence;
+        playerModel.SegmentFamiliarity = familiarityMetric.CurrentFamiliarity;
 
         playerModel.Composure = Mathf.Clamp01(
             playerModel.LightPreference *

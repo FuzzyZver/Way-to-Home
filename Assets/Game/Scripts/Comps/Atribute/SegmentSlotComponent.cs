@@ -13,4 +13,11 @@ public struct SegmentSlotComponent
     public float Familiarity;
     public float TimeSinceLastVisit;
     public float TimeSinceLastCommand;
+
+    public int VisitCount;
+    public float DwellTime;
+
+    public Bounds Bounds;
+    public int OverlapCount;
+    public float LastEnterTime;
 }

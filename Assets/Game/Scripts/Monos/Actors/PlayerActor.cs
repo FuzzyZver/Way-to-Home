@@ -20,6 +20,7 @@ public class PlayerActor: Actor
         entity.Get<PlayerLookBackMetrics>().Frequency = 1f;
         entity.Get<FearFreezeMetrics>().FearFreeze = 1f;
         entity.Get<FlashlightDependenceMetrics>();
+        entity.Get<SegmentFamiliarityMetrics>();
         entity.Get<FlashlightChargeComponent>();
     }
 }

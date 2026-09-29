@@ -44,7 +44,7 @@ MonoBehaviour:
   - Name: LightOff
     CurrentScore: 0
     Type: 1
-    Cooldown: 6
+    Cooldown: 60
     LastTimeUsed: 0
     Credibility: 0.7
     ThemeFits:
@@ -179,7 +179,7 @@ MonoBehaviour:
   - Name: FootstepsBehind
     CurrentScore: 0
     Type: 2
-    Cooldown: 30
+    Cooldown: 300
     LastTimeUsed: 0
     Credibility: 0.7
     ThemeFits:
@@ -314,7 +314,7 @@ MonoBehaviour:
   - Name: StalkerGlimpse
     CurrentScore: 0
     Type: 3
-    Cooldown: 60
+    Cooldown: 600
     LastTimeUsed: 0
     Credibility: 0.6
     ThemeFits:
@@ -449,7 +449,7 @@ MonoBehaviour:
   - Name: 'MakeLightHostile '
     CurrentScore: 0
     Type: 4
-    Cooldown: 120
+    Cooldown: 1200
     LastTimeUsed: 0
     Credibility: 0.5
     ThemeFits:
@@ -584,7 +584,7 @@ MonoBehaviour:
   - Name: DrainFlashlight
     CurrentScore: 0
     Type: 5
-    Cooldown: 40
+    Cooldown: 400
     LastTimeUsed: 0
     Credibility: 0.8
     ThemeFits:
@@ -845,6 +845,166 @@ MonoBehaviour:
           inSlope: 0
           outSlope: 0
           tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+  - Name: Familiar Made wrong
+    CurrentScore: 0
+    Type: 7
+    Cooldown: 0
+    LastTimeUsed: 0
+    Credibility: 0.4
+    ThemeFits:
+    - ThemeId: 1
+      Fit: 0.6
+    Considerations:
+    - ParamType: 0
+      ParamCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.9862366
+          value: 0.5
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    - ParamType: 1
+      ParamCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    - ParamType: 2
+      ParamCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    - ParamType: 3
+      ParamCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    - ParamType: 4
+      ParamCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    - ParamType: 5
+      ParamCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
           weightedMode: 0
           inWeight: 0
           outWeight: 0
